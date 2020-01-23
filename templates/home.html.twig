@@ -9,70 +9,36 @@
         <p class="lead text-center mt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Dignissimos harum modi neque possimus quod sed.</p>
         <p class="lead text-center mt-5">
-            <a class="btn btn-success btn-lg mb-2" href="{{ path('doc_index') }}" role="button">Documentation</a>
-            <a class="btn btn-info btn-lg mb-2"
+            <a class="btn btn-success btn-lg mb-2 rounded-pill" href="{{ path('doc_index') }}" role="button">Documentation</a>
+            <a class="btn btn-info btn-lg mb-2 rounded-pill"
                href="https://discordapp.com/oauth2/authorize?client_id=662240066084798474&permissions=0&scope=bot"
                role="button" target="_blank"><span class="fab fa-discord mr-2"></span>Inviter onegAI</a>
         </p>
     </div>
 
-    <h2 class="h1 mt-5 mb-5">Derniers changelogs :</h2>
+    <h2 class="h1 mt-5 mb-5">Derniers articles :</h2>
 
     <div class="row">
+        {% for lastPost in lastPosts %}
         <div class="col-md-4">
             <div class="card bg-secondary mb-3">
-                <img src="http://placehold.it/1000x400" alt="Image de l'article"
-                     style="height: 200px; width: 100%; display: block">
+                <a href="{{ path('posts_show', { 'slug': lastPost.slug }) }}">
+                    <img src="{{ lastPost.image }}" alt="Image de l'article"
+                         style="height: 200px; width: 100%; display: block">
+                </a>
 
                 <div class="card-body">
                     <h4 class="card-title">
-                        Changelogs 0.5.0
+                        <a href="{{ path('posts_show', { 'slug': lastPost.slug }) }}">{{ lastPost.title }}</a>
                     </h4>
                     <p class="card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Adipisci commodi, doloribus fuga fugit non nostrum quis
-                        reprehenderit sint. Dolorem, quae?
+                        {{ lastPost.introduction }}
                     </p>
-                    <a href="" class="btn btn-info">En savoir plus !</a>
+                    <a href="{{ path('posts_show', { 'slug': lastPost.slug }) }}" class="btn btn-outline-info">En savoir plus !</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card bg-secondary mb-3">
-                <img src="http://placehold.it/1000x400" alt="Image de l'article"
-                     style="height: 200px; width: 100%; display: block">
-
-                <div class="card-body">
-                    <h4 class="card-title">
-                        Changelogs 0.4.5
-                    </h4>
-                    <p class="card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Adipisci commodi, doloribus fuga fugit non nostrum quis
-                        reprehenderit sint. Dolorem, quae?
-                    </p>
-                    <a href="" class="btn btn-info">En savoir plus !</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-secondary mb-3">
-                <img src="http://placehold.it/1000x400" alt="Image de l'article"
-                     style="height: 200px; width: 100%; display: block">
-
-                <div class="card-body">
-                    <h4 class="card-title">
-                        Changelogs 0.4.4
-                    </h4>
-                    <p class="card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Adipisci commodi, doloribus fuga fugit non nostrum quis
-                        reprehenderit sint. Dolorem, quae?
-                    </p>
-                    <a href="" class="btn btn-info">En savoir plus !</a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

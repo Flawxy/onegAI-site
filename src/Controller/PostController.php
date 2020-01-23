@@ -16,7 +16,7 @@ class PostController extends AbstractController
      */
     public function index(PostRepository $repo)
     {
-        $posts = $repo->findAll();
+        $posts = $repo->findBy(array(), array('createdAt' => 'DESC'));
 
         return $this->render('post/index.html.twig', [
             'posts' => $posts

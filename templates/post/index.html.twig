@@ -5,7 +5,7 @@
 {% block body %}
 <div class="container">
     <h1 class="my-3">
-        Articles et Changelogs :
+        Actualité du projet :
     </h1>
     <div class="row">
         {% for post in posts %}
@@ -28,7 +28,7 @@
                     <p class="card-text">
                         {{ post.introduction }}
                     </p>
-                    <a href="{{ url }}" class="btn btn-info">En savoir plus !</a>
+                    <a href="{{ url }}" class="btn btn-outline-info">En savoir plus !</a>
                 </div>
             </div>
         </div>

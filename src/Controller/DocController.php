@@ -14,7 +14,7 @@ class DocController extends AbstractController
      */
     public function index(DocumentationRepository $repo)
     {
-            $entries = $repo->findAll();
+            $entries = $repo->findBy(array(), array('category' => 'ASC'));
 
         return $this->render('doc/index.html.twig', [
             'entries' => $entries

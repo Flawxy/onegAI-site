@@ -28,7 +28,8 @@
     {% for entry in entries %}
         {% if catCheck != entry.category.name %}
             {% if not loop.first %}<div class="myLine"></div>{% endif %}
-            <p id="{{ entry.category.name | url_encode }}" class="h1">{{ entry.category.name }}</p>
+            <p id="{{ entry.category.name | url_encode }}" class="h1 text-center">{{ entry.category.name }}</p>
+            <p>{{ entry.category.description }}</p>
             {% set catCheck = entry.category.name %}
         {% endif %}
 
