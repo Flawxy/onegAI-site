@@ -17,3 +17,57 @@ div.post-title h1, div.post-title p {
     color: antiquewhite;
     text-shadow: 3px 3px 3px rgb(0,0,0);
 }
+
+.myLine {
+    border: 0.5px antiquewhite solid;
+    margin: 50px auto;
+}
+/*-------------------- DOCUMENTATION CATEGORY --------------------*/
+.myLineCommand {
+    border: 0.5px orange dotted;
+    margin: 10px auto;
+}
+
+.headerParagraph {
+    font-size: 1.8rem;
+}
+
+.highlightedText {
+    padding: 0 5px;
+}
+
+.paragraph {
+    background-color: rgba(122, 186, 255, 0.4);
+    padding-bottom: 15px;
+}
+
+.paragraph a {
+    color: red;
+}
+
+.commandDescription strong {
+    text-decoration: underline;
+}
+
+.commandExample span {
+    color: rebeccapurple;
+    font-weight: bold;
+}
+
+.stringParameter:before {
+    content: 'string';
+    position: absolute;
+    top: -17px;
+    color: darkblue;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 40%;
+}
+
+.integerParameter:before {
+    content: 'integer';
+    position: absolute;
+    top: -17px;
+    color: darkred;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 40%;
+}

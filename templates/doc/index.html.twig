@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La documentation d'OnegAI{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="jumbotron mt-3 pb-1 pt-2">
+        <h1>Sommaire :</h1>
+        <ul>
+            {% set catCheck = '' %}
+            {% for entry in entries %}
+                {% if catCheck != entry.category.name %}
+                    <li><a href="#{{ entry.category.name | url_encode}}">{{ entry.category.name }}</a></li>
+                    {% set catCheck = entry.category.name %}
+                {% endif %}
+                <ul>
+                    <li><a href="#{{ entry.command }}">{{ entry.command | capitalize }}</a></li>
+                </ul>
+            {% endfor %}
+        </ul>
+        <p class="text-right"><span class="fas fa-robot mr-1" style="color: orange"></span>Fonctionnalité en cours d'implémentation<br />
+        <span class="fas fa-robot mr-1" style="color: cyan"></span>Fonctionnalité disponible</p>
+    </div>
+</div>
+
+<div class="container">
+    {% set catCheck = '' %}
+    {% for entry in entries %}
+        {% if catCheck != entry.category.name %}
+            {% if not loop.first %}<div class="myLine"></div>{% endif %}
+            <p id="{{ entry.category.name | url_encode }}" class="h1">{{ entry.category.name }}</p>
+            {% set catCheck = entry.category.name %}
+        {% endif %}
+
+        <div id="{{ entry.command }}" class="container paragraph">
+            <div class="row">
+                <span class="headerParagraph col">{{ entry.command | capitalize }}<span class="fas fa-robot ml-3" style="color: {% if entry.wip %}orange{% else %}cyan{% endif %}" title="{% if entry.wip %}WIP{% else %}WORKING{% endif %}"></span></span>
+            </div>
+            <div class="myLineCommand"></div>
+            <div class="row">
+                <span class="syntax text-center col-6"><span class="highlightedText"><strong>Syntaxe : </strong>{{ entry.syntax }}</span></span>
+                <span class="syntaxShortcut text-center col-6"><span class="highlightedText"><strong>Raccourci : </strong>{{ entry.shortcut }}</span></span>
+            </div>
+            <div class="row">
+                <span class="commandDescription col">
+                <strong>Description : </strong>{{ entry.description | raw }}
+                </span>
+            </div>
+            <div class="row">
+                <span class="commandExample col"><strong>Exemple : </strong><span>{{ entry.example }}</span></span>
+            </div>
+        </div>
+
+    {% endfor %}
+</div>
+{% endblock %}
