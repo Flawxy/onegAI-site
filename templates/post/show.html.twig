@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+<div class="post-title" style="background-image: url({{ post.image }}">
+    <div class="container">
+        <h1>{{ post.title }} </h1>
+        <p><small>Posté le {{ post.createdAt | date("d/m/Y") }}</small></p>
+        <p>{{ post.introduction }}</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {{ post.content | raw }}
+        </div>
+    </div>
+</div>
+{% endblock %}

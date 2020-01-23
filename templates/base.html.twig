@@ -18,20 +18,20 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="{{ path('homepage') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Documentation</a>
+                    <a class="nav-link" href="{{ path('posts_index') }}">Actualité</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Changelogs</a>
+                    <a class="nav-link" href="#">Documentation</a>
                 </li>
             </ul>
         </div>
     </nav>
     {# GitHub banner #}
-    <a href="https://github.com/Flawxy/onegai_bot" target="_blank"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" id="gitHubBanner" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    <a href="https://github.com/Flawxy/onegai_bot" target="_blank"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" id="gitHubBanner" class="attachment-full size-full d-none d-md-block" alt="Fork me on GitHub" data-recalc-dims="1"></a>
     {% block body %}{% endblock %}
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -16,10 +16,11 @@ class PostFixtures extends Fixture
         for($i = 0; $i < 8; $i++) {
             $article = new Post();
 
-            $article->setTitle($faker->sentence(mt_rand(3, 10)))
+            $article->setTitle($faker->sentence(mt_rand(3, 6)))
                 ->setContent('<p>' . join('</p><p>', $faker->paragraphs(mt_rand(2,4))) . '</p>')
                 ->setCreatedAt(new \DateTime())
-                ->setImage($faker->imageUrl(600,400));
+                ->setImage(str_replace('pixel', 'flickr',$faker->imageUrl(600,400)))
+                ->setIntroduction($faker->sentence(mt_rand(15,25)));
 
             $manager->persist($article);
         }

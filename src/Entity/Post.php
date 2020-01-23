@@ -43,6 +43,11 @@ class Post
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $introduction;
+
 
     /**
      * Permet d'initilaiser le slug.
@@ -119,6 +124,18 @@ class Post
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getIntroduction(): ?string
+    {
+        return $this->introduction;
+    }
+
+    public function setIntroduction(string $introduction): self
+    {
+        $this->introduction = $introduction;
 
         return $this;
     }
