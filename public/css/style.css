@@ -1,4 +1,19 @@
+div.container {
+    margin-top: 20px;
+}
+
 #gitHubBanner {
     position: absolute;
     right: 0;
+}
+
+div.post-title {
+    padding: 2em;
+    background-size: cover;
+    background-position: center center;
+}
+
+div.post-title h1, div.post-title p {
+    color: antiquewhite;
+    text-shadow: 3px 3px 3px rgb(0,0,0);
 }
