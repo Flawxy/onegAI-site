@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Form\PostType;
 use App\Repository\PostRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
@@ -20,6 +23,39 @@ class PostController extends AbstractController
 
         return $this->render('post/index.html.twig', [
             'posts' => $posts
+        ]);
+    }
+
+    /**
+     * Permet de créer un article
+     *
+     *
+     * @Route("/posts/new", name="posts_create")
+     */
+    public function create(Request $request, EntityManagerInterface $manager)
+    {
+        $post = new Post();
+
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $manager->persist($post);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "L'article <strong>{$post->getTitle()}</strong> a bien été publié !"
+            );
+
+            return $this->redirectToRoute('posts_show', [
+                'slug' => $post->getSlug()
+            ]);
+        }
+
+        return $this->render('post/new.html.twig', [
+            'postForm' => $form->createView()
         ]);
     }
 

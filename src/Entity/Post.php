@@ -63,6 +63,18 @@ class Post
         }
     }
 
+    /**
+     * Permet d'initialiser la date de création d'un article
+     *
+     * @ORM\PrePersist()
+     */
+    public function initializeCreatedAt()
+    {
+        if(empty($this->createdAt)) {
+            $this->createdAt = new \DateTime();
+        }
+    }
+
     public function getId(): ?int
     {
         return $this->id;
