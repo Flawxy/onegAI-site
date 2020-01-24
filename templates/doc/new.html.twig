@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'une entrée dans la documentation{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>Créer une nouvelle entrée dans la documentation</h1>
+
+        {{ form_start(docForm) }}
+
+        {{ form_row(docForm.command) }}
+
+        <div class="form-group">
+            {{ form_label(docForm.syntax) }}
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">o*</span>
+                </div>
+                {{ form_widget(docForm.syntax) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(docForm.shortcut) }}
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">o*</span>
+                </div>
+            {{ form_widget(docForm.shortcut) }}
+            </div>
+        </div>
+
+        {{ form_row(docForm.description) }}
+
+        {{ form_row(docForm.example) }}
+
+        {{ form_row(docForm.category) }}
+
+        {{ form_row(docForm.wip) }}
+
+        <button type="submit" class="btn btn-outline-primary">
+            Publier l'entrée
+        </button>
+
+        {{ form_end(docForm) }}
+
+    </div>
+{% endblock %}
