@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DocumentationRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Documentation
 {
@@ -51,6 +52,34 @@ class Documentation
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
+
+    /**
+     * Permet d'initialiser la syntaxe.
+     *
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function initializeSyntax()
+    {
+        $command = 'o*';
+        $syntax = $this->syntax;
+
+        $this->syntax = $command . $syntax;
+    }
+
+    /**
+     * Permet d'initialiser le raccourci.
+     *
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function initializeShortcut()
+    {
+        $command = 'o*';
+        $shortcut = $this->shortcut;
+
+        $this->shortcut = $command . $shortcut;
+    }
 
     public function getId(): ?int
     {

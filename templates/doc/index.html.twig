@@ -10,11 +10,11 @@
             {% set catCheck = '' %}
             {% for entry in entries %}
                 {% if catCheck != entry.category.name %}
-                    <li><a href="#{{ entry.category.name | url_encode}}">{{ entry.category.name }}</a></li>
+                    <li><a href="#category{{ entry.category.id }}">{{ entry.category.name }}</a></li>
                     {% set catCheck = entry.category.name %}
                 {% endif %}
                 <ul>
-                    <li><a href="#{{ entry.command }}">{{ entry.command | capitalize }}</a></li>
+                    <li><a href="#entry{{ entry.id }}">{{ entry.command | capitalize }}</a></li>
                 </ul>
             {% endfor %}
         </ul>
@@ -28,12 +28,12 @@
     {% for entry in entries %}
         {% if catCheck != entry.category.name %}
             {% if not loop.first %}<div class="myLine"></div>{% endif %}
-            <p id="{{ entry.category.name | url_encode }}" class="h1 text-center">{{ entry.category.name }}</p>
+            <p id="category{{ entry.category.id }}" class="h1 text-center">{{ entry.category.name }}</p>
             <p>{{ entry.category.description }}</p>
             {% set catCheck = entry.category.name %}
         {% endif %}
 
-        <div id="{{ entry.command }}" class="container paragraph">
+        <div id="entry{{ entry.id }}" class="container paragraph">
             <div class="row">
                 <span class="headerParagraph col">{{ entry.command | capitalize }}<span class="fas fa-robot ml-3" style="color: {% if entry.wip %}orange{% else %}cyan{% endif %}" title="{% if entry.wip %}WIP{% else %}WORKING{% endif %}"></span></span>
             </div>

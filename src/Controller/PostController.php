@@ -29,7 +29,6 @@ class PostController extends AbstractController
     /**
      * Permet de créer un article
      *
-     *
      * @Route("/posts/new", name="posts_create")
      */
     public function create(Request $request, EntityManagerInterface $manager)
