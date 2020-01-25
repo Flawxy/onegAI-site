@@ -3,10 +3,24 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DocumentationRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity(
+ *     fields={"command"},
+ *     message="Il existe déjà une commande portant ce nom !"
+ * )
+ *  * @UniqueEntity(
+ *     fields={"syntax"},
+ *     message="Il existe déjà une commande avec cette syntaxe !"
+ * )
+ *  * @UniqueEntity(
+ *     fields={"shortcut"},
+ *     message="Il existe déjà une commande avec ce raccourci !"
+ * )
  */
 class Documentation
 {
@@ -19,26 +33,52 @@ class Documentation
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *     min=5,
+     *     max=255,
+     *     minMessage="Le nom de la commande doit faire au moins 5 caractères !",
+     *     maxMessage="Le nom de la commande ne doit pas excéder 255 caractères !"
+     * )
      */
     private $command;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="La syntaxe de la commande doit faire au moins 3 caractères !",
+     *     maxMessage="La syntaxe de la commande ne doit pas excéder 255 caractères !"
+     * )
      */
     private $syntax;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *     min=2,
+     *     max=255,
+     *     minMessage="Le raccourci de la commande doit faire au moins 2 caractères !",
+     *     maxMessage="Le raccourci de la commande ne doit pas excéder 255 caractères !"
+     * )
      */
     private $shortcut;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *     min=50,
+     *     minMessage="La description de la commande doit faire au moins 50 caractères !"
+     * )
      */
     private $description;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *     min=25,
+     *     minMessage="L'exemple de la commande doit faire au moins 25 caractères !"
+     * )
      */
     private $example;
 
