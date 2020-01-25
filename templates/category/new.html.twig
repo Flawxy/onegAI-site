@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'une nouvelle catégorie{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>Créer une nouvelle catégorie</h1>
+
+        {{ form_start(catForm) }}
+
+        {{ form_widget(catForm) }}
+        <p class="text-right text-danger">NB : La catégorie ne sera pas affichée dans la documentation
+            tant qu'elle ne possèdera pas au moins une entrée !</p>
+
+        <button type="submit" class="btn btn-outline-primary">
+            Créer la catégorie
+        </button>
+
+        {{ form_end(catForm) }}
+
+    </div>
+{% endblock %}

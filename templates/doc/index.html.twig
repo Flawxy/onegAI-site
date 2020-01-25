@@ -10,12 +10,12 @@
             {% set catCheck = '' %}
             {% for entry in entries %}
                 {% if catCheck != entry.category.name %}
+                    {% if not loop.first %}</ul>{% endif %}
                     <li><a href="#category{{ entry.category.id }}">{{ entry.category.name }}</a></li>
                     {% set catCheck = entry.category.name %}
+                    <ul>
                 {% endif %}
-                <ul>
                     <li><a href="#entry{{ entry.id }}">{{ entry.command | capitalize }}</a></li>
-                </ul>
             {% endfor %}
         </ul>
         <p class="text-right"><span class="fas fa-robot mr-1" style="color: orange"></span>Fonctionnalité en cours d'implémentation<br />
