@@ -4,10 +4,20 @@ namespace App\Entity;
 
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity(
+ *     fields={"title"},
+ *     message="Ce titre est déjà utilisé pour un autre article !"
+ * )
+ * @UniqueEntity(
+ *     fields={"slug"},
+ *     message="Ce slug est déjà utilisé par un autre article !"
+ * )
  */
 class Post
 {
@@ -20,11 +30,21 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *     min=10,
+     *     max=255,
+     *     minMessage="le titre de l'article doit faire plus de 10 caractères !",
+     *     maxMessage="Le titre de l'article ne peut pas excéder 255 caractères !"
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *     min=100,
+     *     minMessage="le contenu de l'article doit faire plus de 100 caractères !",
+     * )
      */
     private $content;
 
@@ -40,11 +60,18 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url(
+     *     message="L'url {{ value }} fourni ne semble pas être une adresse valide"
+     * )
      */
     private $image;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *     min=20,
+     *     minMessage="L'introduction de l'article doit faire plus de 20 caractères !"
+     * )
      */
     private $introduction;
 
