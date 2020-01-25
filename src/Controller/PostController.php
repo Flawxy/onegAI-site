@@ -59,6 +59,37 @@ class PostController extends AbstractController
     }
 
     /**
+     * Permet d'afficher le formulaire d'édition
+     *
+     * @Route("/posts/{slug}/edit", name="posts_edit")
+     */
+    public function edit(Request $request, Post $post, EntityManagerInterface $manager)
+    {
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $manager->persist($post);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "L'article <strong>{$post->getTitle()}</strong> a bien été modifié !"
+            );
+
+            return $this->redirectToRoute('posts_show', [
+                'slug' => $post->getSlug()
+            ]);
+        }
+
+        return $this->render('post/edit.html.twig', [
+            'postForm' => $form->createView(),
+            'post' => $post
+        ]);
+    }
+
+    /**
      * Affiche un article spécifique de la BDD
      *
      * @Route("/posts/{slug}", name="posts_show")

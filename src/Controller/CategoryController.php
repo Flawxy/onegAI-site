@@ -42,4 +42,35 @@ class CategoryController extends AbstractController
             'catForm' => $form->createView()
         ]);
     }
+
+    /**
+     * Permet d'afficher le formulaire d'édition
+     *
+     * @Route("/cat/{id}/edit", name="cat_edit")
+     */
+    public function edit(Request $request, Category $category, EntityManagerInterface $manager)
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $manager->persist($category);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "La catégorie <strong>{$category->getName()}</strong> a bien été modifiée !"
+            );
+
+            return $this->redirectToRoute('doc_index', [
+                '_fragment' => 'category'.$category->getId()
+            ]);
+        }
+
+        return $this->render('category/edit.html.twig', [
+            'catForm' => $form->createView(),
+            'category' => $category
+        ]);
+    }
 }
