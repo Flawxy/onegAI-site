@@ -101,10 +101,12 @@ class Documentation
      */
     public function initializeSyntax()
     {
-        $command = 'o*';
-        $syntax = $this->syntax;
+        if(strpos($this->syntax, 'o*') === false) {
+            $command = 'o*';
+            $syntax = $this->syntax;
 
-        $this->syntax = $command . $syntax;
+            $this->syntax = $command . $syntax;
+        }
     }
 
     /**
@@ -115,10 +117,14 @@ class Documentation
      */
     public function initializeShortcut()
     {
-        $command = 'o*';
-        $shortcut = $this->shortcut;
+        if(strpos($this->shortcut, 'o*') === false)
+        {
+            $command = 'o*';
+            $shortcut = $this->shortcut;
 
-        $this->shortcut = $command . $shortcut;
+            $this->shortcut = $command . $shortcut;
+        }
+
     }
 
     public function getId(): ?int
