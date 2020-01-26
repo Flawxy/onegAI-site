@@ -23,6 +23,24 @@ div.post-title h1, div.post-title p {
     margin: 50px auto;
 }
 /*-------------------- DOCUMENTATION CATEGORY --------------------*/
+#docJumbotron {
+    background-image: url("/images/onegaiFull_pp.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+@media (max-width: 767px) {
+    #docJumbotron {
+        background-image: none;
+    }
+}
+
+#wipLegendText {
+    color: antiquewhite;
+    text-shadow: 3px 3px 3px rgb(0,0,0);
+}
+
 .myLineCommand {
     border: 0.5px orange dotted;
     margin: 10px auto;
@@ -71,3 +89,4 @@ div.post-title h1, div.post-title p {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 40%;
 }
+/*-------------------- INFO CATEGORY --------------------*/

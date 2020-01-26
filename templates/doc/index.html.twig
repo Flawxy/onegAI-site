@@ -5,21 +5,23 @@
 {% block body %}
 <div class="container">
     <div class="jumbotron mt-3 pb-1 pt-2">
-        <h1>Sommaire :</h1>
-        <ul>
-            {% set catCheck = '' %}
-            {% for entry in entries %}
-                {% if catCheck != entry.category.name %}
-                    {% if not loop.first %}</ul>{% endif %}
-                    <li><a href="#category{{ entry.category.id }}">{{ entry.category.name }}</a></li>
-                    {% set catCheck = entry.category.name %}
-                    <ul>
-                {% endif %}
-                    <li><a href="#entry{{ entry.id }}">{{ entry.command | capitalize }}</a></li>
-            {% endfor %}
-        </ul>
-        <p class="text-right"><span class="fas fa-robot mr-1" style="color: orange"></span>Fonctionnalité en cours d'implémentation<br />
-        <span class="fas fa-robot mr-1" style="color: cyan"></span>Fonctionnalité disponible</p>
+        <div id="docJumbotron">
+            <h1>Sommaire :</h1>
+            <ul>
+                {% set catCheck = '' %}
+                {% for entry in entries %}
+                    {% if catCheck != entry.category.name %}
+                        {% if not loop.first %}</ul>{% endif %}
+                        <li><a href="#category{{ entry.category.id }}">{{ entry.category.name }}</a></li>
+                        {% set catCheck = entry.category.name %}
+                        <ul>
+                    {% endif %}
+                        <li><a href="#entry{{ entry.id }}">{{ entry.command | capitalize }}</a></li>
+                {% endfor %}
+            </ul>
+            <p id="wipLegendText" class="text-right"><span class="fas fa-robot mr-1" style="color: orange"></span>Fonctionnalité en cours d'implémentation<br />
+            <span class="fas fa-robot mr-1" style="color: cyan"></span>Fonctionnalité disponible</p>
+        </div>
     </div>
 </div>
 
