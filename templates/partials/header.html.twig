@@ -16,10 +16,17 @@
                 <a class="nav-link" href="{{ path('doc_index') }}">Documentation</a>
             </li>
         </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="{{ path('info_index') }}" class="nav-link">Le projet OnegAI</a>
+            </li>
+        </ul>
     </div>
 </nav>
 {# GitHub banner #}
-<a href="https://github.com/Flawxy/onegai_bot" target="_blank"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" id="gitHubBanner" class="attachment-full size-full d-none d-md-block" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+<a href="https://github.com/Flawxy/onegai_bot" target="_blank">
+    <img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149"
+         id="gitHubBanner" class="attachment-full size-full d-none d-lg-block" alt="Fork me on GitHub" data-recalc-dims="1"></a>
 
 {% for label, messages in app.flashes %}
     <div class="container">

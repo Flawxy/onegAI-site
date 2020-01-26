@@ -2,16 +2,19 @@
 
 {% block body %}
 <div class="container">
-
     <div class="mt-4">
+        <div class="text-center">
+            <img src="{{ asset('images/onegaiBot_pp.png') }}" alt="Image de profil d'OnegAI"
+                 style="height: 174px; width: 150px;"/>
+        </div>
         <h1 class="display-3 text-center">OnegAI, bot Discord</h1>
-        <p class="text-center"><small>Version actuelle : <span class="text-primary font-weight-bold">0.5.0</span></small></p>
+        <p class="text-center"><small>Version actuelle : <span class="text-primary font-weight-bold">0.3.2</span></small></p>
         <p class="lead text-center mt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Dignissimos harum modi neque possimus quod sed.</p>
         <p class="lead text-center mt-5">
             <a class="btn btn-success btn-lg mb-2 rounded-pill" href="{{ path('doc_index') }}" role="button">Documentation</a>
             <a class="btn btn-info btn-lg mb-2 rounded-pill"
-               href="https://discordapp.com/oauth2/authorize?client_id=662240066084798474&permissions=0&scope=bot"
+               href="https://discordapp.com/api/oauth2/authorize?client_id=662240066084798474&permissions=2080898167&scope=bot"
                role="button" target="_blank"><span class="fab fa-discord mr-2"></span>Inviter onegAI</a>
         </p>
     </div>
