@@ -29,11 +29,14 @@
          id="gitHubBanner" class="attachment-full size-full d-none d-lg-block" alt="Fork me on GitHub" data-recalc-dims="1"></a>
 
 {% for label, messages in app.flashes %}
-    <div class="container">
-        <div class="alert alert-{{ label }}">
-            {% for message in messages %}
-                <p>{{ message | raw }}</p>
-            {% endfor %}
-        </div>
+    <div class="alertFlash alert alert-{{ label }} alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Fermer</span>
+        </button>
+        {% for message in messages %}
+            <p>{{ message | raw }}</p>
+        {% endfor %}
     </div>
 {% endfor %}
+
