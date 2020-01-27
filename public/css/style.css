@@ -22,6 +22,15 @@ div.post-title h1, div.post-title p {
     border: 0.5px antiquewhite solid;
     margin: 50px auto;
 }
+
+.alertFlash {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
+    opacity: 0.8;
+}
+
 /*-------------------- DOCUMENTATION CATEGORY --------------------*/
 #docJumbotron {
     background-image: url("/images/onegaiFull_pp.png");

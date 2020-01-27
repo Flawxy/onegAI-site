@@ -10,25 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PostType extends AbstractType
+class PostType extends ApplicationType
 {
-    /**
-     * Permet d'avoir la configuration de base d'un champ du formulaire
-     *
-     * @param string $label
-     * @param string $placeholder
-     * @return array
-     */
-    public function getConfiguration($label, $placeholder)
-    {
-        return [
-            'label' => $label,
-            'attr' => [
-                'placeholder' => $placeholder
-            ]
-        ];
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

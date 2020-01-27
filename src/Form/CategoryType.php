@@ -9,26 +9,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CategoryType extends AbstractType
+class CategoryType extends ApplicationType
 {
-
-    /**
-     * Permet d'avoir la configuration de base d'un champ du formulaire
-     *
-     * @param string $label
-     * @param string $placeholder
-     * @return array
-     */
-    public function getConfiguration($label, $placeholder)
-    {
-        return [
-            'label' => $label,
-            'attr' => [
-                'placeholder' => $placeholder
-            ]
-        ];
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

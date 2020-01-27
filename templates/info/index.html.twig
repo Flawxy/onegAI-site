@@ -169,13 +169,13 @@
     $('#botTechnologiesText>div').hide();
     $('#siteTechnologiesText>div').hide();
 
-    imageTarget.mouseover(function() {
+    imageTarget.on('mouseover', function() {
         this.src = this.src.replace("bnw", "color");
         const imageTargetText = this.src.split('logo_')[1].split('_')[0];
-        $(`#${imageTargetText}`).show();
-        imageTarget.mouseout(function() {
+        $(`#${imageTargetText}`).fadeIn(500);
+        imageTarget.on('mouseout',function() {
             this.src = this.src.replace("color", "bnw");
-            $(`#${imageTargetText}`).hide();
+            $(`#${imageTargetText}`).fadeOut(500);
         });
     });
 
