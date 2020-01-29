@@ -33,29 +33,34 @@ class PostController extends AbstractController
      */
     public function create(Request $request, EntityManagerInterface $manager)
     {
-        $post = new Post();
+        if($this->getUser()) {
 
-        $form = $this->createForm(PostType::class, $post);
+            $post = new Post();
 
-        $form->handleRequest($request);
+            $form = $this->createForm(PostType::class, $post);
 
-        if($form->isSubmitted() && $form->isValid()){
-            $manager->persist($post);
-            $manager->flush();
+            $form->handleRequest($request);
 
-            $this->addFlash(
-                'success',
-                "L'article <strong>{$post->getTitle()}</strong> a bien été publié !"
-            );
+            if ($form->isSubmitted() && $form->isValid()) {
+                $manager->persist($post);
+                $manager->flush();
 
-            return $this->redirectToRoute('posts_show', [
-                'slug' => $post->getSlug()
+                $this->addFlash(
+                    'success',
+                    "L'article <strong>{$post->getTitle()}</strong> a bien été publié !"
+                );
+
+                return $this->redirectToRoute('posts_show', [
+                    'slug' => $post->getSlug()
+                ]);
+            }
+
+            return $this->render('post/new.html.twig', [
+                'postForm' => $form->createView()
             ]);
+        }else {
+            return $this->redirectToRoute('homepage');
         }
-
-        return $this->render('post/new.html.twig', [
-            'postForm' => $form->createView()
-        ]);
     }
 
     /**
@@ -65,28 +70,33 @@ class PostController extends AbstractController
      */
     public function edit(Request $request, Post $post, EntityManagerInterface $manager)
     {
-        $form = $this->createForm(PostType::class, $post);
+        if($this->getUser()) {
 
-        $form->handleRequest($request);
+            $form = $this->createForm(PostType::class, $post);
 
-        if($form->isSubmitted() && $form->isValid()){
-            $manager->persist($post);
-            $manager->flush();
+            $form->handleRequest($request);
 
-            $this->addFlash(
-                'success',
-                "L'article <strong>{$post->getTitle()}</strong> a bien été modifié !"
-            );
+            if ($form->isSubmitted() && $form->isValid()) {
+                $manager->persist($post);
+                $manager->flush();
 
-            return $this->redirectToRoute('posts_show', [
-                'slug' => $post->getSlug()
+                $this->addFlash(
+                    'success',
+                    "L'article <strong>{$post->getTitle()}</strong> a bien été modifié !"
+                );
+
+                return $this->redirectToRoute('posts_show', [
+                    'slug' => $post->getSlug()
+                ]);
+            }
+
+            return $this->render('post/edit.html.twig', [
+                'postForm' => $form->createView(),
+                'post' => $post
             ]);
+        }else {
+            return $this->redirectToRoute('homepage');
         }
-
-        return $this->render('post/edit.html.twig', [
-            'postForm' => $form->createView(),
-            'post' => $post
-        ]);
     }
 
     /**

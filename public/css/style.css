@@ -1,3 +1,15 @@
+body {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 200px;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
 div.container {
     margin-top: 20px;
 }
@@ -18,6 +30,11 @@ div.post-title h1, div.post-title p {
     text-shadow: 3px 3px 3px rgb(0,0,0);
 }
 
+div.articleContent {
+    color: whitesmoke;
+    text-shadow: 3px 3px 3px rgb(0,0,0);
+}
+
 .myLine {
     border: 0.5px antiquewhite solid;
     margin: 50px auto;
@@ -26,11 +43,23 @@ div.post-title h1, div.post-title p {
 .alertFlash {
     position: fixed;
     width: 100%;
-    bottom: 0;
+    top: 0;
     z-index: 1000;
     opacity: 0.8;
 }
+/*-------------------- ADMINISTRATION CATEGORY --------------------*/
+.adminButton {
+    text-shadow: 3px 3px 3px rgb(0,0,0);
+    font-weight: bold;
+}
 
+.adminIcon {
+    color: white;
+}
+
+.adminIcon:hover {
+    color: deepskyblue;
+}
 /*-------------------- DOCUMENTATION CATEGORY --------------------*/
 #docJumbotron {
     background-image: url("/images/onegaiBot_full.png");
@@ -51,7 +80,7 @@ div.post-title h1, div.post-title p {
 }
 
 .myLineCommand {
-    border: 0.5px orange dotted;
+    border: 1px antiquewhite dotted;
     margin: 10px auto;
 }
 
@@ -72,13 +101,14 @@ div.post-title h1, div.post-title p {
     color: red;
 }
 
-.commandDescription strong {
+.commandDescription strong, .commandExample strong {
     text-decoration: underline;
 }
 
 .commandExample span {
-    color: rebeccapurple;
+    color: deepskyblue;
     font-weight: bold;
+    text-shadow: 1px 1px 1px rgb(0,0,0);
 }
 
 .stringParameter:before {

@@ -22,13 +22,18 @@ class AccountController extends AbstractController
      */
     public function login(AuthenticationUtils $utils)
     {
-        $error = $utils->getLastAuthenticationError();
-        $username = $utils->getLastUsername();
+        if(!$this->getUser()) {
 
-        return $this->render('account/login.html.twig', [
-            'hasError' => $error !== null,
-            'username' => $username
-        ]);
+            $error = $utils->getLastAuthenticationError();
+            $username = $utils->getLastUsername();
+
+            return $this->render('account/login.html.twig', [
+                'hasError' => $error !== null,
+                'username' => $username
+            ]);
+        }else {
+            return $this->redirectToRoute('homepage');
+        }
     }
 
 
@@ -41,7 +46,7 @@ class AccountController extends AbstractController
      */
     public function logout()
     {
-        //
+        //...
     }
 
     /**

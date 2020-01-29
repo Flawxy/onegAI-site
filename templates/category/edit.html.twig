@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container">
 
-        <h1>Modifier la catégorie {{ category.name }}</h1>
+        <h1>Modifier la catégorie "{{ category.name }}".</h1>
 
         {{ form_start(catForm) }}
 
@@ -14,7 +14,7 @@
             tant qu'elle ne possèdera pas au moins une entrée !</p>
 
         <button type="submit" class="btn btn-outline-primary">
-            Créer la catégorie
+            Modifier la catégorie
         </button>
 
         {{ form_end(catForm) }}

@@ -13,11 +13,19 @@
                     {% set ec = entry.category %}
                     {% if catCheck != ec.name %}
                         {% if not loop.first %}</ul>{% endif %}
-                        <li><a href="#category{{ ec.id }}">{{ ec.name }}</a></li>
+                        <li><a href="#category{{ ec.id }}">{{ ec.name }}</a>
+                            {% if app.user %}
+                                <a href="{{ path('cat_edit', {'id': ec.id}) }}"><span class="far fa-edit adminIcon"></span></a>
+                            {% endif %}
+                        </li>
                         {% set catCheck = ec.name %}
                         <ul>
                     {% endif %}
-                        <li><a href="#entry{{ entry.id }}">{{ entry.command | capitalize }}</a></li>
+                        <li><a href="#entry{{ entry.id }}">{{ entry.command | capitalize }}</a>
+                            {% if app.user %}
+                                <a href="{{ path('doc_edit', {'id': entry.id}) }}"><span class="fas fa-edit adminIcon"></span></a>
+                            {% endif %}
+                        </li>
                 {% endfor %}
             </ul>
             <p id="wipLegendText" class="text-right"><span class="fas fa-robot mr-1" style="color: orange"></span>Fonctionnalité en cours d'implémentation<br />
@@ -32,13 +40,21 @@
         {% set ec = entry.category %}
         {% if catCheck != ec.name %}
             {% if not loop.first %}<div class="myLine"></div>{% endif %}
-            <p id="category{{ ec.id }}" class="h1 text-center">{{ ec.name }}</p>
+            <p id="category{{ ec.id }}" class="h1 text-center">{{ ec.name }}
+                {% if app.user %}
+                    <a href="{{ path('cat_edit', {'id': ec.id}) }}"><span class="far fa-edit adminIcon"></span></a>
+                {% endif %}
+            </p>
             <p>{{ ec.description }}</p>
             {% set catCheck = ec.name %}
         {% endif %}
         <div id="entry{{ entry.id }}" class="container paragraph">
             <div class="row">
-                <span class="headerParagraph col">{{ entry.command | capitalize }}<span class="fas fa-robot ml-3" style="color: {% if entry.wip %}orange{% else %}cyan{% endif %}" title="{% if entry.wip %}WIP{% else %}WORKING{% endif %}"></span></span>
+                <span class="headerParagraph col">{{ entry.command | capitalize }}<span class="fas fa-robot ml-3" style="color: {% if entry.wip %}orange{% else %}cyan{% endif %}" title="{% if entry.wip %}WIP{% else %}WORKING{% endif %}"></span>
+                    {% if app.user %}
+                        <a href="{{ path('doc_edit', {'id': entry.id}) }}"><span class="fas fa-edit adminIcon"></span></a>
+                    {% endif %}
+                </span>
             </div>
             <div class="myLineCommand"></div>
             <div class="row">
@@ -47,11 +63,11 @@
             </div>
             <div class="row">
                 <span class="commandDescription col">
-                <strong>Description : </strong>{{ entry.description | raw }}
+                <strong>Description :</strong> {{ entry.description | raw }}
                 </span>
             </div>
             <div class="row">
-                <span class="commandExample col"><strong>Exemple : </strong><span>{{ entry.example }}</span></span>
+                <span class="commandExample col"><strong>Exemple :</strong> <span>{{ entry.example }}</span></span>
             </div>
         </div>
     {% endfor %}

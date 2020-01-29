@@ -18,29 +18,34 @@ class CategoryController extends AbstractController
      */
     public function create(Request $request, EntityManagerInterface $manager)
     {
-        $category = new Category();
+        if($this->getUser()) {
 
-        $form = $this->createForm(CategoryType::class, $category);
+            $category = new Category();
 
-        $form->handleRequest($request);
+            $form = $this->createForm(CategoryType::class, $category);
 
-        if($form->isSubmitted() && $form->isValid()){
-            $manager->persist($category);
-            $manager->flush();
+            $form->handleRequest($request);
 
-            $this->addFlash(
-                'success',
-                "La catégorie <strong>{$category->getName()}</strong> a bien été ajoutée à la documentation !"
-            );
+            if ($form->isSubmitted() && $form->isValid()) {
+                $manager->persist($category);
+                $manager->flush();
 
-            return $this->redirectToRoute('doc_index', [
-                '_fragment' => 'category'.$category->getId()
+                $this->addFlash(
+                    'success',
+                    "La catégorie <strong>{$category->getName()}</strong> a bien été ajoutée à la documentation !"
+                );
+
+                return $this->redirectToRoute('doc_index', [
+                    '_fragment' => 'category' . $category->getId()
+                ]);
+            }
+
+            return $this->render('category/new.html.twig', [
+                'catForm' => $form->createView()
             ]);
+        }else {
+            return $this->redirectToRoute('homepage');
         }
-
-        return $this->render('category/new.html.twig', [
-            'catForm' => $form->createView()
-        ]);
     }
 
     /**
@@ -50,27 +55,32 @@ class CategoryController extends AbstractController
      */
     public function edit(Request $request, Category $category, EntityManagerInterface $manager)
     {
-        $form = $this->createForm(CategoryType::class, $category);
+        if($this->getUser()) {
 
-        $form->handleRequest($request);
+            $form = $this->createForm(CategoryType::class, $category);
 
-        if($form->isSubmitted() && $form->isValid()){
-            $manager->persist($category);
-            $manager->flush();
+            $form->handleRequest($request);
 
-            $this->addFlash(
-                'success',
-                "La catégorie <strong>{$category->getName()}</strong> a bien été modifiée !"
-            );
+            if ($form->isSubmitted() && $form->isValid()) {
+                $manager->persist($category);
+                $manager->flush();
 
-            return $this->redirectToRoute('doc_index', [
-                '_fragment' => 'category'.$category->getId()
+                $this->addFlash(
+                    'success',
+                    "La catégorie <strong>{$category->getName()}</strong> a bien été modifiée !"
+                );
+
+                return $this->redirectToRoute('doc_index', [
+                    '_fragment' => 'category' . $category->getId()
+                ]);
+            }
+
+            return $this->render('category/edit.html.twig', [
+                'catForm' => $form->createView(),
+                'category' => $category
             ]);
+        }else {
+            return $this->redirectToRoute('homepage');
         }
-
-        return $this->render('category/edit.html.twig', [
-            'catForm' => $form->createView(),
-            'category' => $category
-        ]);
     }
 }
