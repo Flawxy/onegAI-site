@@ -1,0 +1,32 @@
+{% for post in posts %}
+    {% set url = path('posts_show', {'slug': post.slug}) %}
+    <div class="col-md-4">
+        <div class="card bg-secondary mb-3">
+            <div class="card-header text-center pb-0">
+                <a href="{{ url }}">
+                    <h4 class="card-title mb-0">
+                        {{ post.title }}
+                    </h4>
+                </a>
+                <p class="my-0">
+                    <small>Posté le {{ post.createdAt | date("d/m/Y") }}</small>
+                </p>
+            </div>
+            <a href="{{ url }}">
+                <img src="{{ post.image }}" alt="Image de l'article"
+                     style="height: 200px; width: 100%; display: block">
+            </a>
+            <div class="card-body">
+
+                <p class="card-text">
+                    {{ post.introduction }}
+                </p>
+                <div class="text-center">
+                    <a href="{{ url }}" class="btn btn-outline-info rounded-pill">
+                        En savoir plus !
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

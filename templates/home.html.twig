@@ -22,26 +22,7 @@
     <h2 class="h1 mt-5 mb-5">Derniers articles :</h2>
 
     <div class="row">
-        {% for lastPost in lastPosts %}
-        <div class="col-md-4">
-            <div class="card bg-secondary mb-3">
-                <a href="{{ path('posts_show', { 'slug': lastPost.slug }) }}">
-                    <img src="{{ lastPost.image }}" alt="Image de l'article"
-                         style="height: 200px; width: 100%; display: block">
-                </a>
-
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="{{ path('posts_show', { 'slug': lastPost.slug }) }}">{{ lastPost.title }}</a>
-                    </h4>
-                    <p class="card-text">
-                        {{ lastPost.introduction }}
-                    </p>
-                    <a href="{{ path('posts_show', { 'slug': lastPost.slug }) }}" class="btn btn-outline-info">En savoir plus !</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+        {% include 'post/_post.html.twig' %}
     </div>
 </div>
 {% endblock %}

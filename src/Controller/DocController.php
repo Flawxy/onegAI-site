@@ -34,35 +34,40 @@ class DocController extends AbstractController
      */
     public function create(Request $request, EntityManagerInterface $manager)
     {
-        $doc = new Documentation();
+        if($this->getUser()) {
 
-        $form = $this->createForm(DocumentationType::class, $doc);
+            $doc = new Documentation();
 
-        $form->handleRequest($request);
+            $form = $this->createForm(DocumentationType::class, $doc);
 
-        if($form->isSubmitted() && $form->isValid()){
-            $manager->persist($doc);
-            $manager->flush();
+            $form->handleRequest($request);
 
-            $this->addFlash(
-                'success',
-                "L'entrée <strong>{$doc->getCommand()}</strong> a bien été ajoutée à la documentation !"
-            );
+            if ($form->isSubmitted() && $form->isValid()) {
+                $manager->persist($doc);
+                $manager->flush();
 
-            return $this->redirectToRoute('doc_index', [
-                '_fragment' => 'entry'.$doc->getId()
+                $this->addFlash(
+                    'success',
+                    "L'entrée <strong>{$doc->getCommand()}</strong> a bien été ajoutée à la documentation !"
+                );
+
+                return $this->redirectToRoute('doc_index', [
+                    '_fragment' => 'entry' . $doc->getId()
+                ]);
+            }
+
+            return $this->render('doc/new.html.twig', [
+                'docForm' => $form->createView()
             ]);
+        }else {
+            return $this->redirectToRoute('homepage');
         }
-
-        return $this->render('doc/new.html.twig', [
-            'docForm' => $form->createView()
-        ]);
     }
 
     /**
      * Permet d'afficher le formulaire d'édition
      *
-     * @Route("/doc/{id}/edit", name="doc_edit")     *
+     * @Route("/doc/{id}/edit", name="doc_edit")
      *
      * @param Request $request
      * @param Documentation $documentation
@@ -71,26 +76,31 @@ class DocController extends AbstractController
      */
     public function edit(Request $request, Documentation $doc, EntityManagerInterface $manager)
     {
-        $form = $this->createForm(DocumentationType::class, $doc);
+        if($this->getUser()) {
 
-        $form->handleRequest($request);
+            $form = $this->createForm(DocumentationType::class, $doc);
 
-        if($form->isSubmitted() && $form->isValid()){
-            $manager->persist($doc);
-            $manager->flush();
+            $form->handleRequest($request);
 
-            $this->addFlash(
-                'success',
-                "L'entrée <strong>{$doc->getCommand()}</strong> a bien été modifiée !"
-            );
+            if ($form->isSubmitted() && $form->isValid()) {
+                $manager->persist($doc);
+                $manager->flush();
 
-            return $this->redirectToRoute('doc_index', [
-                '_fragment' => 'entry'.$doc->getId()
+                $this->addFlash(
+                    'success',
+                    "L'entrée <strong>{$doc->getCommand()}</strong> a bien été modifiée !"
+                );
+
+                return $this->redirectToRoute('doc_index', [
+                    '_fragment' => 'entry' . $doc->getId()
+                ]);
+            }
+
+            return $this->render('doc/edit.html.twig', [
+                'docForm' => $form->createView()
             ]);
+        }else {
+            return $this->redirectToRoute('homepage');
         }
-
-        return $this->render('doc/edit.html.twig', [
-            'docForm' => $form->createView()
-        ]);
     }
 }

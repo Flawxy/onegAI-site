@@ -17,7 +17,7 @@ class HomeController extends Controller {
         $lastPosts = $repo->findBy(array(), array('createdAt' => 'DESC'), 3);
 
         return $this->render('home.html.twig', [
-            'lastPosts' => $lastPosts
+            'posts' => $lastPosts
         ]);
     }
 }
