@@ -45,7 +45,6 @@ div.articleContent {
     width: 100%;
     top: 0;
     z-index: 1000;
-    opacity: 0.8;
 }
 /*-------------------- ADMINISTRATION CATEGORY --------------------*/
 .adminButton {
@@ -60,6 +59,12 @@ div.articleContent {
 .adminIcon:hover {
     color: deepskyblue;
 }
+
+.textListCategory {
+    color: antiquewhite;
+    text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+}
+
 /*-------------------- DOCUMENTATION CATEGORY --------------------*/
 #docJumbotron {
     background-image: url("/images/onegaiBot_full.png");

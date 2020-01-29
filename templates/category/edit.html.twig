@@ -13,10 +13,13 @@
         <p class="text-right text-danger">NB : La catégorie ne sera pas affichée dans la documentation
             tant qu'elle ne possèdera pas au moins une entrée !</p>
 
-        <button type="submit" class="btn btn-outline-primary">
+        <button type="submit" class="btn btn-outline-primary adminButton rounded-pill">
             Modifier la catégorie
         </button>
-
+        <div class="text-right">
+            <a href="{{ path('cat_delete', {'id': category.id}) }}" class=" btn btn-danger adminButton rounded-pill"
+               onclick="return confirm(`Êtes-vous sûr de vouloir supprimer la catégorie {{ category.name }} ?`)">Supprimer la catégorie</a>
+        </div>
         {{ form_end(catForm) }}
 
     </div>

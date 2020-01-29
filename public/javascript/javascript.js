@@ -1,4 +1,5 @@
 $(window).on('load',() => {
-    $('.alertFlash').fadeOut(5000);
+    $('.alertFlash.alert-success').fadeOut(5000);
+    $('.alertFlash.alert-danger').fadeOut(10000);
 });
 
