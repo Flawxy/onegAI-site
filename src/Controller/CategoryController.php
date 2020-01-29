@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Form\CategoryType;
+use App\Repository\CategoryRepository;
+use App\Repository\DocumentationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -79,6 +81,62 @@ class CategoryController extends AbstractController
                 'catForm' => $form->createView(),
                 'category' => $category
             ]);
+        }else {
+            return $this->redirectToRoute('homepage');
+        }
+    }
+
+    /**
+     * Permet de supprimer un article
+     *
+     *@Route("/cat/{id}/delete", name="cat_delete")
+     */
+    public function delete(DocumentationRepository $repo, Category $category, EntityManagerInterface $manager)
+    {
+        if($this->getUser()) {
+
+            if($repo->findOneBy(['category' => $category->getId()])) {
+
+                $this->addFlash(
+                    'danger',
+                    "La catégorie <strong>{$category->getName()}</strong> n'a pas été supprimée car elle n'est pas vide !"
+                );
+
+                return $this->redirectToRoute('doc_index');
+
+            }else {
+
+                $manager->remove($category);
+                $manager->flush();
+
+                $this->addFlash(
+                    'success',
+                    "La catégorie <strong>{$category->getName()}</strong> a bien été supprimée !"
+                );
+
+                return $this->redirectToRoute('cat_index');
+            }
+        }else {
+
+            return $this->redirectToRoute('homepage');
+        }
+    }
+
+    /**
+     * Permet d'afficher la liste des catégories
+     *
+     * @Route("/cat/index", name="cat_index")
+     */
+    public function index(CategoryRepository $repo)
+    {
+        if($this->getUser()) {
+
+            $entries = $repo->findBy(array(), array('id' => 'ASC'));
+
+            return $this->render('category/index.html.twig', [
+                'categories' => $entries
+            ]);
+
         }else {
             return $this->redirectToRoute('homepage');
         }

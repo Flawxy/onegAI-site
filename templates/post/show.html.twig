@@ -10,6 +10,8 @@
         <p>{{ post.introduction }}</p>
         {% if app.user %}
             <a href="{{ path('posts_edit', {'slug': post.slug}) }}" class="btn btn-info adminButton rounded-pill">Modifier l'article</a>
+            <a href="{{ path('posts_delete', {'slug': post.slug}) }}" class="btn btn-danger adminButton rounded-pill"
+               onclick="return confirm(`Êtes-vous sûr de vouloir supprimer l'article {{ post.title }} ?`)">Supprimer l'article</a>
         {% endif %}
     </div>
 </div>

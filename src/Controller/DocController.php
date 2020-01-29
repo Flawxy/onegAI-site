@@ -97,9 +97,33 @@ class DocController extends AbstractController
             }
 
             return $this->render('doc/edit.html.twig', [
-                'docForm' => $form->createView()
+                'docForm' => $form->createView(),
+                'entry' => $doc
             ]);
         }else {
+            return $this->redirectToRoute('homepage');
+        }
+    }
+
+    /**
+     * Permet de supprimer un article
+     *
+     *@Route("/doc/{id}/delete", name="doc_delete")
+     */
+    public function delete(Documentation $doc, EntityManagerInterface $manager)
+    {
+        if($this->getUser()) {
+            $manager->remove($doc);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "L'entrée <strong>{$doc->getCommand()}</strong> a bien été supprimée !"
+            );
+
+            return $this->redirectToRoute('doc_index');
+        }else {
+
             return $this->redirectToRoute('homepage');
         }
     }

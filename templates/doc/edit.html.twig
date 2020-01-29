@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container">
 
-        <h1>Modification d'une entrée de la documentation</h1>
+        <h1>Modification de l'entrée "{{ entry.command }}".</h1>
 
         {{ form_start(docForm) }}
 
@@ -40,9 +40,12 @@
         {{ form_row(docForm.wip) }}
 
         <button type="submit" class="btn btn-outline-primary">
-            Publier l'entrée
+            Modifier l'entrée
         </button>
-
+        <div class="text-right">
+            <a href="{{ path('doc_delete', {'id': entry.id }) }}" class=" btn btn-danger adminButton rounded-pill"
+               onclick="return confirm(`Êtes-vous sûr de vouloir supprimer l'entrée {{ entry.command }} ?`)">Supprimer l'entrée</a>
+        </div>
         {{ form_end(docForm) }}
 
     </div>

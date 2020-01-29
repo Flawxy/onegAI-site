@@ -111,4 +111,27 @@ class PostController extends AbstractController
             'post' => $post
         ]);
     }
+
+    /**
+     * Permet de supprimer un article
+     *
+     *@Route("/posts/{slug}/delete", name="posts_delete")
+     */
+    public function delete(Post $post, EntityManagerInterface $manager)
+    {
+        if($this->getUser()) {
+            $manager->remove($post);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "L'article <strong>{$post->getTitle()}</strong> a bien été supprimé !"
+            );
+
+            return $this->redirectToRoute('posts_index');
+        }else {
+
+            return $this->redirectToRoute('homepage');
+        }
+    }
 }
