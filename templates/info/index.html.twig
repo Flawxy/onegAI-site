@@ -10,7 +10,28 @@
     </div>
     <div class="row">
         <div class="col">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At commodi, consectetur expedita ipsam laborum porro repellat. Aspernatur ex expedita, harum hic inventore ipsum, minima minus nobis officia porro ut voluptatum. Aliquid amet aperiam beatae cupiditate, deleniti dignissimos dolorem doloribus dolorum eius ex explicabo facere harum illum itaque iusto labore laudantium minima minus nisi nobis praesentium quaerat quisquam quos rerum sapiente vel voluptate voluptates. Adipisci amet asperiores corporis cum dolore et fugit harum hic, in incidunt ipsam ipsum iure iusto maiores molestias natus nemo officiis provident quam quas qui quidem quod quos reiciendis repellat repellendus sed ut velit veniam veritatis</p>
+            <p>OnegAI est un projet réalisé dans le cadre de la fin de ma formation de développeur web chez <a
+                        href="https://openclassrooms.com/fr/" target="_blank">OpenClassrooms</a>. Afin de consolider les
+            compétences acquises durant cette formation et d'en développer de nouvelles, j'ai choisi de diviser mon projet
+                en deux parties distinctes mais complémentaires :</p>
+            <ul>
+                <li>
+                    Un <span class="badge badge-info badge-pill"><a href="#botTechnologies" class="text-dark">bot Discord</a></span>, codé en <a href="#botTechnologies">Nodejs</a>
+                    et son Framework <a href="#botTechnologies">Expressjs</a>. Ce bot utilise la Base de Données
+                    <a href="#botTechnologies">MongoDB</a>, dont l'utilisation m'a permis de travailler sur une architecture
+                    <a href="#botTechnologies">noSQL</a>. Vous pouvez inviter mon bot sur votre serveur Discord depuis
+                    le bouton de la page d'accueil (ou via
+                    <a href="https://discordapp.com/api/oauth2/authorize?client_id=662240066084798474&permissions=2080898167&scope=bot"
+                       target="_blank">ce lien</a>) ;
+                </li>
+                <li>
+                    Son <span class="badge badge-info badge-pill text-dark"><a href="#siteTechnologies" class="text-dark">site de présentation et de documentation</a></span>, dont vous parcourez actuellement les pages. J'ai opté
+                    pour l'utilisation du Framework <a href="#siteTechnologies">Symfony 4</a>, avec lequel j'ai pu
+                    approfondir mes connaissances sur la Programmation Orientée Objet avec <a href="#siteTechnologies">PHP</a>.
+                    Ce Framework m'a aussi permis de travailler avec l'ORM <a href="#siteTechnologies">Doctrine</a> ainsi
+                    qu'avec le langage de Templating <a href="#siteTechnologies">Twig</a>.
+                </li>
+            </ul>
         </div>
     </div>
     <div class="post-title">
@@ -18,9 +39,8 @@
     </div>
     <div class="row">
         <div class="col">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At commodi, consectetur expedita ipsam laborum porro repellat. Aspernatur ex expedita, harum hic inventore ipsum, minima minus nobis officia porro ut voluptatum. Aliquid amet aperiam beatae cupiditate, deleniti dignissimos dolorem doloribus dolorum eius ex explicabo facere harum illum itaque iusto labore laudantium minima minus nisi nobis praesentium quaerat quisquam quos rerum sapiente vel voluptate voluptates. Adipisci amet asperiores corporis cum dolore et fugit harum hic, in incidunt ipsam ipsum iure iusto maiores molestias natus nemo officiis provident quam quas qui quidem quod quos reiciendis repellat repellendus sed ut velit veniam veritatis</p>
             <p>Les technologies utilisées par le bot :</p>
-            <div class="jumbotron jumbotronTechnologies d-flex justify-content-around bg-light mt-3 pb-1 pt-2">
+            <div id="botTechnologies" class="jumbotron jumbotronTechnologies d-flex justify-content-around bg-light mt-3 pb-1 pt-2">
                 <img src="{{ asset('images/bot-technologies/logo_javascript_bnw.png') }}" alt="Logo JavaScript"/>
                 <img src="{{ asset('images/bot-technologies/logo_jquery_bnw.png') }}" alt="Logo jQuery"/>
                 <img src="{{ asset('images/bot-technologies/logo_es6_bnw.png') }}" alt="Logo ECMAScript 6"/>
@@ -34,49 +54,66 @@
                     <div class="card-header">Technologie du bot</div>
                     <div class="card-body">
                         <h4 class="card-title">JavaScript</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
+                        <p class="card-text">JavaScript est un langage de programmation de scripts principalement
+                            employé dans les pages web interactives mais aussi pour les serveurs avec l'utilisation
+                            (par exemple) de Node.js. </p>
                     </div>
                 </div>
                 <div id="jquery" class="card text-white bg-success mb-3" style="max-width: 20rem;">
                     <div class="card-header">Technologie du bot</div>
                     <div class="card-body">
                         <h4 class="card-title">jQuery</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
+                        <p class="card-text">jQuery est une bibliothèque JavaScript libre et multiplateforme créée pour
+                            faciliter l'écriture de scripts côté client dans le code HTML des pages web.</p>
                     </div>
                 </div>
                 <div id="es6" class="card text-white bg-success mb-3" style="max-width: 20rem;">
                     <div class="card-header">Technologie du bot</div>
                     <div class="card-body">
                         <h4 class="card-title">ECMAScript 6</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
+                        <p class="card-text">ECMAScript est un ensemble de normes concernant les langages de
+                            programmation de type script et standardisées par Ecma International dans le cadre de la
+                            spécification ECMA-262. Il s'agit donc d'un standard, dont les spécifications sont mises en
+                            œuvre dans différents langages de script, comme JavaScript ou ActionScript.</p>
                     </div>
                 </div>
                 <div id="nodejs" class="card text-white bg-success mb-3" style="max-width: 20rem;">
                     <div class="card-header">Technologie du bot</div>
                     <div class="card-body">
                         <h4 class="card-title">NodeJS</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
+                        <p class="card-text">Node.js est une plateforme logicielle libre en JavaScript orientée vers
+                            les applications réseau événementielles hautement concurrentes qui doivent pouvoir monter
+                            en charge. Elle utilise la machine virtuelle V8, la librairie libuv pour sa boucle
+                            d'évènements, et implémente sous licence MIT les spécifications CommonJS.</p>
                     </div>
                 </div>
                 <div id="expressjs" class="card text-white bg-success mb-3" style="max-width: 20rem;">
                     <div class="card-header">Technologie du bot</div>
                     <div class="card-body">
                         <h4 class="card-title">ExpressJS</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
+                        <p class="card-text">Express.js est un framework pour construire des applications web basées
+                            sur Node.js. C'est de fait le framework standard pour le développement de serveur
+                            en Node.js.</p>
                     </div>
                 </div>
                 <div id="mongodb" class="card text-white bg-success mb-3" style="max-width: 20rem;">
                     <div class="card-header">Technologie du bot</div>
                     <div class="card-body">
                         <h4 class="card-title">MongoDB</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
+                        <p class="card-text">MongoDB est un système de gestion de base de données orienté documents,
+                            répartissable sur un nombre quelconque d'ordinateurs et ne nécessitant pas de schéma
+                            prédéfini des données. Il est écrit en C++.</p>
                     </div>
                 </div>
                 <div id="nosql" class="card text-white bg-success mb-3" style="max-width: 20rem;">
                     <div class="card-header">Technologie du bot</div>
                     <div class="card-body">
-                        <h4 class="card-title">noSQL</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
+                        <h4 class="card-title">NoSQL</h4>
+                        <p class="card-text">En informatique et en bases de données, NoSQL désigne une famille de
+                            systèmes de gestion de base de données (SGBD) qui s'écarte du paradigme classique des
+                            bases relationnelles. L'explicitation du terme la plus populaire de l'acronyme est Not
+                            only SQL (« pas seulement SQL » en anglais) même si cette interprétation peut être
+                            discutée.</p>
                     </div>
                 </div>
             </div>
@@ -87,78 +124,97 @@
     </div>
     <div class="row">
         <div class="col">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At commodi, consectetur expedita ipsam laborum porro repellat. Aspernatur ex expedita, harum hic inventore ipsum, minima minus nobis officia porro ut voluptatum. Aliquid amet aperiam beatae cupiditate, deleniti dignissimos dolorem doloribus dolorum eius ex explicabo facere harum illum itaque iusto labore laudantium minima minus nisi nobis praesentium quaerat quisquam quos rerum sapiente vel voluptate voluptates. Adipisci amet asperiores corporis cum dolore et fugit harum hic, in incidunt ipsam ipsum iure iusto maiores molestias natus nemo officiis provident quam quas qui quidem quod quos reiciendis repellat repellendus sed ut velit veniam veritatis</p>
             <p>Les technologies utilisées par le site :</p>
-            <div class="jumbotron jumbotronTechnologies d-flex justify-content-around bg-light mt-3 pb-1 pt-2">
+            <div id="siteTechnologies" class="jumbotron jumbotronTechnologies d-flex justify-content-around bg-light mt-3 pb-1 pt-2">
+                <img src="{{ asset('images/site-technologies/logo_php_bnw.png') }}" alt="Logo PHP 7"/>
+                <img src="{{ asset('images/site-technologies/logo_bootstrap4_bnw.png') }}" alt="Logo Bootstrap 4"/>
                 <img src="{{ asset('images/site-technologies/logo_symfony4_bnw.png') }}" alt="Logo Symfony 4"/>
                 <img src="{{ asset('images/site-technologies/logo_doctrine_bnw.png') }}" alt="Logo Doctrine"/>
                 <img src="{{ asset('images/site-technologies/logo_twig_bnw.png') }}" alt="Logo Twig"/>
-                <img src="{{ asset('images/site-technologies/logo_php_bnw.png') }}" alt="Logo PHP 7"/>
                 <img src="{{ asset('images/site-technologies/logo_sql_bnw.png') }}" alt="Logo SQL"/>
                 <img src="{{ asset('images/site-technologies/logo_mysql_bnw.png') }}" alt="Logo MySQL"/>
-                <img src="{{ asset('images/site-technologies/logo_bootstrap4_bnw.png') }}" alt="Logo Bootstrap 4"/>
             </div>
             <div id="siteTechnologiesText" class="d-flex justify-content-center">
-                <div id="symfony4" class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                    <div class="card-header">Technologie du site</div>
-                    <div class="card-body">
-                        <h4 class="card-title">Symfony 4</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
-                    </div>
-                </div>
-                <div id="doctrine" class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                    <div class="card-header">Technologie du site</div>
-                    <div class="card-body">
-                        <h4 class="card-title">Doctrine</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
-                    </div>
-                </div>
-                <div id="twig" class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                    <div class="card-header">Technologie du site</div>
-                    <div class="card-body">
-                        <h4 class="card-title">Twig</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
-                    </div>
-                </div>
                 <div id="php" class="card text-white bg-success mb-3" style="max-width: 20rem;">
                     <div class="card-header">Technologie du site</div>
                     <div class="card-body">
                         <h4 class="card-title">PHP</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
-                    </div>
-                </div>
-                <div id="sql" class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                    <div class="card-header">Technologie du site</div>
-                    <div class="card-body">
-                        <h4 class="card-title">SQL</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
-                    </div>
-                </div>
-                <div id="mysql" class="card text-white bg-success mb-3" style="max-width: 20rem;">
-                    <div class="card-header">Technologie du site</div>
-                    <div class="card-body">
-                        <h4 class="card-title">MySQL</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
+                        <p class="card-text">PHP est un langage de programmation libre, principalement utilisé pour
+                            produire des pages Web dynamiques via un serveur HTTP, mais pouvant également fonctionner
+                            comme n'importe quel langage interprété de façon locale. PHP est un langage impératif
+                            orienté objet.</p>
                     </div>
                 </div>
                 <div id="bootstrap4" class="card text-white bg-success mb-3" style="max-width: 20rem;">
                     <div class="card-header">Technologie du site</div>
                     <div class="card-body">
                         <h4 class="card-title">Bootstrap 4</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, eveniet?</p>
+                        <p class="card-text">Bootstrap est une collection d'outils utiles à la création du design
+                            (graphisme, animation et interactions avec la page dans le navigateur, etc.) de sites et
+                            d'applications web. C'est un ensemble qui contient des codes HTML et CSS, des formulaires,
+                            boutons, outils de navigation et autres éléments interactifs, ainsi que des extensions
+                            JavaScript en option.</p>
+                    </div>
+                </div>
+                <div id="symfony4" class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Technologie du site</div>
+                    <div class="card-body">
+                        <h4 class="card-title">Symfony 4</h4>
+                        <p class="card-text">Symfony est un ensemble de composants PHP ainsi qu'un framework MVC
+                            libre écrit en PHP. Il fournit des fonctionnalités modulables et adaptables qui permettent
+                            de faciliter et d’accélérer le développement d'un site web.</p>
+                    </div>
+                </div>
+                <div id="doctrine" class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Technologie du site</div>
+                    <div class="card-body">
+                        <h4 class="card-title">Doctrine</h4>
+                        <p class="card-text">Doctrine est un ORM (couche d'abstraction à la base de données) pour PHP.
+                            Il s'agit d'un logiciel libre sous licence GNU LGPL. Doctrine est l'ORM par défaut du
+                            framework Symfony (depuis la version 1.3 de ce framework). Cependant son utilisation dans
+                            le cadre d'un projet développé avec Symfony est optionnelle.</p>
+                    </div>
+                </div>
+                <div id="twig" class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Technologie du site</div>
+                    <div class="card-body">
+                        <h4 class="card-title">Twig</h4>
+                        <p class="card-text">Twig est un moteur de templates pour le langage de programmation PHP,
+                            utilisé par défaut par le framework Symfony. Il a été inspiré par Jinja, moteur de
+                            template Python.</p>
+                    </div>
+                </div>
+                <div id="sql" class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Technologie du site</div>
+                    <div class="card-body">
+                        <h4 class="card-title">SQL</h4>
+                        <p class="card-text">SQL (sigle de Structured Query Language, en français langage de requête
+                            structurée) est un langage informatique normalisé servant à exploiter des bases de données
+                            relationnelles. La partie langage de manipulation des données de SQL permet de rechercher,
+                            d'ajouter, de modifier ou de supprimer des données dans les bases de données relationnelles.</p>
+                    </div>
+                </div>
+                <div id="mysql" class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Technologie du site</div>
+                    <div class="card-body">
+                        <h4 class="card-title">MySQL</h4>
+                        <p class="card-text">MySQL est un système de gestion de bases de données relationnelles (SGBDR).
+                            Il est distribué sous une double licence GPL et propriétaire. Il fait partie des logiciels
+                            de gestion de base de données les plus utilisés au monde, autant par le grand public
+                            (applications web principalement) que par des professionnels.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="post-title">
+    {#<div class="post-title">
         <p>Participer au projet</p>
     </div>
     <div class="row">
         <div class="col">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At commodi, consectetur expedita ipsam laborum porro repellat. Aspernatur ex expedita, harum hic inventore ipsum, minima minus nobis officia porro ut voluptatum. Aliquid amet aperiam beatae cupiditate, deleniti dignissimos dolorem doloribus dolorum eius ex explicabo facere harum illum itaque iusto labore laudantium minima minus nisi nobis praesentium quaerat quisquam quos rerum sapiente vel voluptate voluptates. Adipisci amet asperiores corporis cum dolore et fugit harum hic, in incidunt ipsam ipsum iure iusto maiores molestias natus nemo officiis provident quam quas qui quidem quod quos reiciendis repellat repellendus sed ut velit veniam veritatis</p>
+            <p>...</p>
         </div>
-    </div>
+    </div>#}
 </div>
     
 {% endblock %}
