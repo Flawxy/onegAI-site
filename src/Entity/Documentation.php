@@ -76,8 +76,8 @@ class Documentation
     /**
      * @ORM\Column(type="text")
      * @Assert\Length(
-     *     min=25,
-     *     minMessage="L'exemple de la commande doit faire au moins 25 caractères !"
+     *     min=6,
+     *     minMessage="L'exemple de la commande doit faire au moins 6 caractères !"
      * )
      */
     private $example;
