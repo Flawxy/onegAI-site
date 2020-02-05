@@ -4,14 +4,16 @@
 
 {% block body %}
     {% for category in categories %}
-        <div class="container">
+        {% if loop.first %}<div class="container mt-5">{% else %}<div class="container">{% endif %}
             <div class="list-group">
-                <a href="{{ path('cat_edit', {'id': category.id}) }}" class="list-group-item textListCategory bg-light list-group-item-action flex-column align-items-start active">
+                <a href="{{ path('cat_edit', {'id': category.id}) }}" class="list-group-item textListCategory bg-light
+                list-group-item-action flex-column align-items-start active">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{ category.name }}</h5>
                     </div>
                     <p class="mb-1">{{ category.description }}</p>
-                    <p {% if (category.documentation | length) == 0 %} class="text-danger font-weight-bold"{% endif %}>Nombre d'entrée(s) dans la catégorie : {{ category.documentation | length }}</p>
+                    <p {% if (category.documentation | length) == 0 %} class="text-danger font-weight-bold"{% endif %}>
+                        Nombre d'entrée(s) dans la catégorie : {{ category.documentation | length }}</p>
                 </a>
             </div>
         </div>

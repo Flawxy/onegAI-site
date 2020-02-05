@@ -40,12 +40,13 @@
         {% set ec = entry.category %}
         {% if catCheck != ec.name %}
             {% if not loop.first %}<div class="myLine"></div>{% endif %}
-            <p id="category{{ ec.id }}" class="h1 text-center">{{ ec.name }}
+            <p id="category{{ ec.id }}" class="h1 text-center">
+                <span class="text-primary">{{ ec.name }}</span>
                 {% if app.user %}
                     <a href="{{ path('cat_edit', {'id': ec.id}) }}"><span class="far fa-edit adminIcon"></span></a>
                 {% endif %}
             </p>
-            <p>{{ ec.description }}</p>
+            <p class="categoryContent">{{ ec.description }}</p>
             {% set catCheck = ec.name %}
         {% endif %}
         <div id="entry{{ entry.id }}" class="container paragraph">

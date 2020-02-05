@@ -17,16 +17,16 @@
             </li>
             {% if app.user %}
                 <li class="nav-item">
-                    <a href="{{ path('cat_index') }}" class="nav-link adminButton btn btn-success mx-1 btn-sm rounded-pill">Liste des catégories</a>
+                    <a href="{{ path('cat_index') }}" class="nav-link adminButton btn btn-info mx-1 btn-sm rounded-pill">Liste des catégories</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ path('cat_create') }}" class="nav-link adminButton btn btn-info mx-1 btn-sm rounded-pill">Créer une catégorie</a>
+                    <a href="{{ path('cat_create') }}" class="nav-link adminButton btn btn-success mx-1 btn-sm rounded-pill">Créer une catégorie</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ path('doc_create') }}" class="nav-link adminButton btn btn-info mx-1 btn-sm rounded-pill">Créer une entrée de documentation</a>
+                    <a href="{{ path('doc_create') }}" class="nav-link adminButton btn btn-success mx-1 btn-sm rounded-pill">Créer une entrée de documentation</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ path('posts_create') }}" class="nav-link adminButton btn btn-info mx-1 btn-sm rounded-pill">Créer un article</a>
+                    <a href="{{ path('posts_create') }}" class="nav-link adminButton btn btn-success mx-1 btn-sm rounded-pill">Créer un article</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('account_password') }}" class="nav-link adminButton btn btn-warning mx-1 btn-sm rounded-pill">Modifier le mot de passe</a>
@@ -54,9 +54,13 @@
             <span aria-hidden="true">&times;</span>
             <span class="sr-only">Fermer</span>
         </button>
-        {% for message in messages %}
-            <p>{{ message | raw }}</p>
-        {% endfor %}
+        <div class="d-flex flex-row align-items-center justify-content-center clearfix">
+            {% include 'partials/_flashIcons.html.twig' %}
+            {% for message in messages %}
+                <p class="text-center align-content-center">{{ message | raw }}</p>
+            {% endfor %}
+            {% include 'partials/_flashIcons.html.twig' %}
+        </div>
     </div>
 {% endfor %}
 

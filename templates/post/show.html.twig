@@ -9,13 +9,19 @@
         <p><small>Posté le {{ post.createdAt | date("d/m/Y") }}</small></p>
         <p>{{ post.introduction }}</p>
         {% if app.user %}
-            <a href="{{ path('posts_edit', {'slug': post.slug}) }}" class="btn btn-info adminButton rounded-pill">Modifier l'article</a>
+            <a href="{{ path('posts_edit', {'slug': post.slug}) }}" class="btn btn-info adminButton rounded-pill">
+                <span class="far fa-edit"></span>
+                Modifier l'article
+            </a>
             <a href="{{ path('posts_delete', {'slug': post.slug}) }}" class="btn btn-danger adminButton rounded-pill"
-               onclick="return confirm(`Êtes-vous sûr de vouloir supprimer l'article {{ post.title }} ?`)">Supprimer l'article</a>
+               onclick="return confirm(`Êtes-vous sûr de vouloir supprimer l'article {{ post.title }} ?`)">
+                <span class="far fa-trash-alt"></span>
+                Supprimer l'article
+            </a>
         {% endif %}
     </div>
 </div>
-    <div class="container articleContent">
+    <div class="container postContent">
     <div class="row">
         <div class="col">
             {{ post.content | raw }}
