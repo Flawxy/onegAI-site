@@ -17,12 +17,14 @@ class CategoryType extends ApplicationType
             ->add(
                 'name',
                 TextType::class,
-                $this->getConfiguration("Nom", "Le nom de la nouvelle catégorie")
+                $this->getConfiguration("Nom",
+                    "Le nom de la nouvelle catégorie ([15-255] caractères)")
             )
             ->add(
                 'description',
                 TextareaType::class,
-                $this->getConfiguration("Description", "La description de la nouvelle catégorie")
+                $this->getConfiguration("Description",
+                    "La description de la nouvelle catégorie (50 caractères minimum)")
             )
         ;
     }

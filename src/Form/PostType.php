@@ -15,13 +15,17 @@ class PostType extends ApplicationType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, $this->getConfiguration("Titre",
-                "Le titre de l'article"))
-            ->add('introduction', TextType::class, $this->getConfiguration("Introduction",
-                "La phrase d'accroche de l'article"))
-            ->add('content', TextareaType::class, $this->getConfiguration("Contenu",
-                "Le contenu de l'article"))
-            ->add('image', UrlType::class, $this->getConfiguration("Image",
+            ->add('title', TextType::class,
+                $this->getConfiguration("Titre",
+                "Le titre de l'article ([10-255] caractères)"))
+            ->add('introduction', TextType::class,
+                $this->getConfiguration("Introduction",
+                "La phrase d'accroche de l'article (20 caractères minimum)"))
+            ->add('content', TextareaType::class,
+                $this->getConfiguration("Contenu",
+                "Le contenu de l'article (100 caractères minimum)"))
+            ->add('image', UrlType::class,
+                $this->getConfiguration("Image",
                 "L'adresse de l'image de présentation de l'article"))
         ;
     }

@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(
  *     fields={"title"},
- *     message="Ce titre est déjà utilisé pour un autre article !"
+ *     message="Ce titre est déjà utilisé par un autre article !"
  * )
  * @UniqueEntity(
  *     fields={"slug"},
@@ -33,7 +33,7 @@ class Post
      * @Assert\Length(
      *     min=10,
      *     max=255,
-     *     minMessage="le titre de l'article doit faire plus de 10 caractères !",
+     *     minMessage="le titre de l'article doit faire au moins 10 caractères !",
      *     maxMessage="Le titre de l'article ne peut pas excéder 255 caractères !"
      * )
      */
@@ -43,7 +43,7 @@ class Post
      * @ORM\Column(type="text")
      * @Assert\Length(
      *     min=100,
-     *     minMessage="le contenu de l'article doit faire plus de 100 caractères !",
+     *     minMessage="le contenu de l'article doit faire au moins 100 caractères !",
      * )
      */
     private $content;
@@ -70,14 +70,14 @@ class Post
      * @ORM\Column(type="text")
      * @Assert\Length(
      *     min=20,
-     *     minMessage="L'introduction de l'article doit faire plus de 20 caractères !"
+     *     minMessage="L'introduction de l'article doit faire au moins 20 caractères !"
      * )
      */
     private $introduction;
 
 
     /**
-     * Permet d'initilaiser le slug.
+     * Initializes the slug in the appropriate format
      *
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -91,7 +91,7 @@ class Post
     }
 
     /**
-     * Permet d'initialiser la date de création d'un article
+     * Initializes the creation date of a post
      *
      * @ORM\PrePersist()
      */

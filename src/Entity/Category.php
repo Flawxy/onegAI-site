@@ -29,7 +29,7 @@ class Category
      * @Assert\Length(
      *     min=15,
      *     max=255,
-     *     minMessage="Le nom de la catégorie doit faire plus de 15 caractères !",
+     *     minMessage="Le nom de la catégorie doit faire au moins 15 caractères !",
      *     maxMessage="Le nom de la catégorie ne doit pas dépasser 255 caractères !"
      * )
      */

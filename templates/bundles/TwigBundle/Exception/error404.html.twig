@@ -1,15 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Page non trouvée (404) !{% endblock %}
+{% block title %}Page non trouvée (erreur 404) !{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1>Oups ! Vous vous êtes égaré du droit chemin !</h1>
-        <p>Pas de panique ! Vous pouvez retourner sur le site, en évitant les hautes herbes, en cliquant sur ce bouton :</p>
-        <div class="text-right">
-            <a href="{{ path('homepage') }}" class="btn btn-primary">
-                Retour à l'accueil
-            </a>
+        <div class="row">
+            <div class="col">
+                <p class="h1">Oups ! Vous vous êtes égaré du droit chemin !</p>
+                <p>Pas de panique ! Vous pouvez retourner sur le site, en évitant les hautes herbes, en cliquant sur ce bouton !</p>
+                <div class="text-right">
+                    <a href="{{ path('homepage') }}" class="btn btn-primary rounded-pill">
+                        Retour à l'accueil
+                    </a>
+                </div>
+            </div>
+            <div class="col-5 d-none d-md-block">
+                <img src="{{ asset('images/onegaiBot_full.png') }}" alt="Image représentant OnegAI" class="img-fluid">
+            </div>
         </div>
     </div>
 {% endblock %}

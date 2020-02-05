@@ -7,36 +7,26 @@ use App\Form\PostType;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
 {
     /**
-     * Affiche tous les articles de la BDD
-     *
-     * @Route("/posts", name="posts_index")
-     */
-    public function index(PostRepository $repo)
-    {
-        $posts = $repo->findBy(array(), array('createdAt' => 'DESC'));
-
-        return $this->render('post/index.html.twig', [
-            'posts' => $posts
-        ]);
-    }
-
-    /**
-     * Permet de créer un article
+     * Displays the creation page of a post
      *
      * @Route("/posts/new", name="posts_create")
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return RedirectResponse|Response
      */
     public function create(Request $request, EntityManagerInterface $manager)
     {
         if($this->getUser()) {
 
             $post = new Post();
-
             $form = $this->createForm(PostType::class, $post);
 
             $form->handleRequest($request);
@@ -64,9 +54,43 @@ class PostController extends AbstractController
     }
 
     /**
-     * Permet d'afficher le formulaire d'édition
+     * Displays the posts list page
+     *
+     * @Route("/posts", name="posts_index")
+     * @param PostRepository $repo
+     * @return Response
+     */
+    public function index(PostRepository $repo)
+    {
+        $posts = $repo->findBy(array(), array('createdAt' => 'DESC'));
+
+        return $this->render('post/index.html.twig', [
+            'posts' => $posts
+        ]);
+    }
+
+    /**
+     * Displays the page of a specific article
+     *
+     * @Route("/posts/{slug}", name="posts_show")
+     * @param Post $post
+     * @return Response
+     */
+    public function show(Post $post)
+    {
+        return $this->render('post/show.html.twig', [
+            'post' => $post
+        ]);
+    }
+
+    /**
+     * Displays the editing page of a post
      *
      * @Route("/posts/{slug}/edit", name="posts_edit")
+     * @param Request $request
+     * @param Post $post
+     * @param EntityManagerInterface $manager
+     * @return RedirectResponse|Response
      */
     public function edit(Request $request, Post $post, EntityManagerInterface $manager)
     {
@@ -100,22 +124,12 @@ class PostController extends AbstractController
     }
 
     /**
-     * Affiche un article spécifique de la BDD
+     * Manages deletion of a post
      *
-     * @Route("/posts/{slug}", name="posts_show")
-     *
-     */
-    public function show(Post $post)
-    {
-        return $this->render('post/show.html.twig', [
-            'post' => $post
-        ]);
-    }
-
-    /**
-     * Permet de supprimer un article
-     *
-     *@Route("/posts/{slug}/delete", name="posts_delete")
+     * @Route("/posts/{slug}/delete", name="posts_delete")
+     * @param Post $post
+     * @param EntityManagerInterface $manager
+     * @return RedirectResponse
      */
     public function delete(Post $post, EntityManagerInterface $manager)
     {

@@ -9,28 +9,20 @@ use App\Repository\DocumentationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DocController extends AbstractController
 {
     /**
-     * @Route("/doc", name="doc_index")
-     *
-     */
-    public function index(DocumentationRepository $repo)
-    {
-            $entries = $repo->findBy(array(), array('category' => 'ASC'));
-
-        return $this->render('doc/index.html.twig', [
-            'entries' => $entries
-        ]);
-    }
-
-    /**
-     * Permet de créer une entrée dans la documentation
+     * Displays the creation page of a new documentation entry
      *
      * @Route("/doc/new", name="doc_create")
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return RedirectResponse|Response
      */
     public function create(Request $request, EntityManagerInterface $manager)
     {
@@ -65,14 +57,30 @@ class DocController extends AbstractController
     }
 
     /**
-     * Permet d'afficher le formulaire d'édition
+     * Displays the main page of the documentation
+     *
+     * @Route("/doc", name="doc_index")
+     * @param DocumentationRepository $repo
+     * @return Response
+     */
+    public function index(DocumentationRepository $repo)
+    {
+            $entries = $repo->findBy(array(), array('category' => 'ASC'));
+
+        return $this->render('doc/index.html.twig', [
+            'entries' => $entries
+        ]);
+    }
+
+    /**
+     * Displays the editing page of a documentation entry
      *
      * @Route("/doc/{id}/edit", name="doc_edit")
      *
      * @param Request $request
-     * @param Documentation $documentation
+     * @param Documentation $doc
      * @param EntityManagerInterface $manager
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse|Response
      */
     public function edit(Request $request, Documentation $doc, EntityManagerInterface $manager)
     {
@@ -106,9 +114,12 @@ class DocController extends AbstractController
     }
 
     /**
-     * Permet de supprimer un article
+     * Manages deletion of a documentation entry
      *
-     *@Route("/doc/{id}/delete", name="doc_delete")
+     * @Route("/doc/{id}/delete", name="doc_delete")
+     * @param Documentation $doc
+     * @param EntityManagerInterface $manager
+     * @return RedirectResponse
      */
     public function delete(Documentation $doc, EntityManagerInterface $manager)
     {
