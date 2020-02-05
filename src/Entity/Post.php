@@ -36,6 +36,10 @@ class Post
      *     minMessage="le titre de l'article doit faire au moins 10 caractères !",
      *     maxMessage="Le titre de l'article ne peut pas excéder 255 caractères !"
      * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
+     * )
      */
     private $title;
 
@@ -44,6 +48,10 @@ class Post
      * @Assert\Length(
      *     min=100,
      *     minMessage="le contenu de l'article doit faire au moins 100 caractères !",
+     * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
      * )
      */
     private $content;
@@ -63,6 +71,10 @@ class Post
      * @Assert\Url(
      *     message="L'url {{ value }} fourni ne semble pas être une adresse valide"
      * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
+     * )
      */
     private $image;
 
@@ -71,6 +83,10 @@ class Post
      * @Assert\Length(
      *     min=20,
      *     minMessage="L'introduction de l'article doit faire au moins 20 caractères !"
+     * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
      * )
      */
     private $introduction;
