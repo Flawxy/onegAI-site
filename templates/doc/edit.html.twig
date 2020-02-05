@@ -3,7 +3,7 @@
 {% block title %}Modification d'une entrée de la documentation{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container clearfix">
 
         <h1>Modification de l'entrée "{{ entry.command }}".</h1>
 
@@ -39,10 +39,10 @@
 
         {{ form_row(docForm.wip) }}
 
-        <button type="submit" class="btn btn-outline-primary">
+        <button type="submit" class="btn btn-primary adminButton rounded-pill">
             Modifier l'entrée
         </button>
-        <div class="text-right">
+        <div class="float-right">
             <a href="{{ path('doc_delete', {'id': entry.id }) }}" class=" btn btn-danger adminButton rounded-pill"
                onclick="return confirm(`Êtes-vous sûr de vouloir supprimer l'entrée {{ entry.command }} ?`)">Supprimer l'entrée</a>
         </div>
