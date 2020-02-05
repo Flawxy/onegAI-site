@@ -8,15 +8,20 @@ use App\Repository\CategoryRepository;
 use App\Repository\DocumentationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CategoryController extends AbstractController
 {
     /**
-     * Permet de créer une nouvelle catégorie dans la documentation
+     * Display the creation page of a new category in the documentation
      *
      * @Route("/cat/new", name="cat_create")
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return RedirectResponse|Response
      */
     public function create(Request $request, EntityManagerInterface $manager)
     {
@@ -51,9 +56,35 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * Permet d'afficher le formulaire d'édition
+     * Displays the categories list page
+     *
+     * @Route("/cat/index", name="cat_index")
+     * @param CategoryRepository $repo
+     * @return RedirectResponse|Response
+     */
+    public function index(CategoryRepository $repo)
+    {
+        if($this->getUser()) {
+
+            $entries = $repo->findBy(array(), array('id' => 'ASC'));
+
+            return $this->render('category/index.html.twig', [
+                'categories' => $entries
+            ]);
+
+        }else {
+            return $this->redirectToRoute('homepage');
+        }
+    }
+
+    /**
+     * Displays the editing page of a category
      *
      * @Route("/cat/{id}/edit", name="cat_edit")
+     * @param Request $request
+     * @param Category $category
+     * @param EntityManagerInterface $manager
+     * @return RedirectResponse|Response
      */
     public function edit(Request $request, Category $category, EntityManagerInterface $manager)
     {
@@ -87,9 +118,13 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * Permet de supprimer un article
+     * Manages deletion of a category
      *
-     *@Route("/cat/{id}/delete", name="cat_delete")
+     * @Route("/cat/{id}/delete", name="cat_delete")
+     * @param DocumentationRepository $repo
+     * @param Category $category
+     * @param EntityManagerInterface $manager
+     * @return RedirectResponse
      */
     public function delete(DocumentationRepository $repo, Category $category, EntityManagerInterface $manager)
     {
@@ -118,26 +153,6 @@ class CategoryController extends AbstractController
             }
         }else {
 
-            return $this->redirectToRoute('homepage');
-        }
-    }
-
-    /**
-     * Permet d'afficher la liste des catégories
-     *
-     * @Route("/cat/index", name="cat_index")
-     */
-    public function index(CategoryRepository $repo)
-    {
-        if($this->getUser()) {
-
-            $entries = $repo->findBy(array(), array('id' => 'ASC'));
-
-            return $this->render('category/index.html.twig', [
-                'categories' => $entries
-            ]);
-
-        }else {
             return $this->redirectToRoute('homepage');
         }
     }

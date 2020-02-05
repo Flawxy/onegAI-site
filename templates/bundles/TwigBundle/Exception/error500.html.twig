@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Problème avec le serveur distant (erreur 500) !{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="h1">Le serveur distant rencontre un problème !</p>
+                <p>Pas de panique ! Vous n'y êtes absolument pour rien ! Le serveur qui gère ce site internet rencontre
+                    actuellement un problème. Peut-être qu'il est surchargé à cause de la popularité du site (peu probable)
+                    ou parce que le nouveau stagiaire a renversé dessus sa tasse de café (plus probable). Dans tous les cas,
+                    vous pouvez tenter de revenir sur la page d'accueil !</p>
+                <div class="text-right">
+                    <a href="{{ path('homepage') }}" class="btn btn-primary rounded-pill">
+                        Retour à l'accueil
+                    </a>
+                </div>
+            </div>
+            <div class="col-5 d-none d-md-block">
+                <img src="{{ asset('images/onegaiBot_full.png') }}" alt="Image représentant OnegAI" class="img-fluid">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

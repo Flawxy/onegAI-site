@@ -94,10 +94,11 @@ class Documentation
     private $category;
 
     /**
-     * Permet d'initialiser la syntaxe.
+     * Initializes the syntax in the appropriate  format
      *
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
+     * @return string
      */
     public function initializeSyntax()
     {
@@ -107,13 +108,15 @@ class Documentation
 
             $this->syntax = $command . $syntax;
         }
+        return $this->syntax;
     }
 
     /**
-     * Permet d'initialiser le raccourci.
+     * Initializes the shortcut syntax in the appropriate  format
      *
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
+     * @return string
      */
     public function initializeShortcut()
     {
@@ -124,6 +127,7 @@ class Documentation
 
             $this->shortcut = $command . $shortcut;
         }
+        return $this->shortcut;
 
     }
 

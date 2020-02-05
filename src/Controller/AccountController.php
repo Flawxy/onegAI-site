@@ -8,6 +8,7 @@ use App\Form\PasswordUpdateType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormError;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,7 +19,11 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class AccountController extends AbstractController
 {
     /**
+     * Login function (managed by Symfony)
+     *
      * @Route("/login", name="account_login")
+     * @param AuthenticationUtils $utils
+     * @return RedirectResponse|Response
      */
     public function login(AuthenticationUtils $utils)
     {
@@ -36,33 +41,27 @@ class AccountController extends AbstractController
         }
     }
 
-
     /**
-     * Permet de se déconnecter
+     * Logout function (managed by Symfony)
      *
      * @Route("/logout", name="account_logout")
-     *
      * @return void
      */
-    public function logout()
-    {
-        //...
-    }
+    public function logout(){}
 
     /**
-     * Permet de modifier le mot de passe
+     * Displays the password modification page
      *
      * @Route("/account/password-update", name="account_password")
-     *
-     * @return Response
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @param EntityManagerInterface $manager
+     * @return RedirectResponse|Response
      */
     public function updatePassword(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $manager)
     {
         $passwordUpdate = new PasswordUpdate();
-
-        /** @var User $user */
         $user = $this->getUser();
-
         $form = $this->createForm(PasswordUpdateType::class, $passwordUpdate);
 
         $form->handleRequest($request);
