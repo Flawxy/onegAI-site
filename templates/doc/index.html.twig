@@ -50,7 +50,9 @@
         {% endif %}
         <div id="entry{{ entry.id }}" class="container paragraph">
             <div class="row">
-                <span class="headerParagraph col">{{ entry.command | capitalize }}<span class="fas fa-robot ml-3" style="color: {% if entry.wip %}orange{% else %}cyan{% endif %}" title="{% if entry.wip %}WIP{% else %}WORKING{% endif %}"></span>
+                <span class="headerParagraph col">
+                    <span class="commandName">{{ entry.command | capitalize }}</span>
+                    <span class="fas fa-robot ml-3" style="color: {% if entry.wip %}orange{% else %}cyan{% endif %}" title="{% if entry.wip %}WIP{% else %}WORKING{% endif %}"></span>
                     {% if app.user %}
                         <a href="{{ path('doc_edit', {'id': entry.id}) }}"><span class="fas fa-edit adminIcon"></span></a>
                     {% endif %}
