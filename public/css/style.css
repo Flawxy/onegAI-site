@@ -65,6 +65,10 @@ div.articleContent {
     text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
 }
 
+span.fas.fa-plus {
+    color: greenyellow;
+}
+
 /*-------------------- DOCUMENTATION CATEGORY --------------------*/
 #docJumbotron {
     background-image: url("/images/onegaiBot_full.png");
