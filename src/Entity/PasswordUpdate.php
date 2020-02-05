@@ -18,6 +18,10 @@ class PasswordUpdate
      *     min=8,
      *     minMessage="Le mot de passe doit faire au moins 8 caractères"
      * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
+     * )
      * @var string
      */
     private $newPassword;
@@ -26,6 +30,10 @@ class PasswordUpdate
      * @Assert\EqualTo(
      *     propertyPath="newPassword",
      *     message="Les deux mots de passe indiqués ne correspondent pas"
+     * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
      * )
      * @var string
      */

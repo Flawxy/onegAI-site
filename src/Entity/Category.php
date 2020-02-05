@@ -32,6 +32,10 @@ class Category
      *     minMessage="Le nom de la catégorie doit faire au moins 15 caractères !",
      *     maxMessage="Le nom de la catégorie ne doit pas dépasser 255 caractères !"
      * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
+     * )
      */
     private $name;
 
@@ -40,6 +44,10 @@ class Category
      * @Assert\Length(
      *     min=50,
      *     minMessage="La description de la catégorie doit faire au moins 50 caractères !"
+     * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
      * )
      */
     private $description;

@@ -39,6 +39,10 @@ class Documentation
      *     minMessage="Le nom de la commande doit faire au moins 5 caractères !",
      *     maxMessage="Le nom de la commande ne doit pas excéder 255 caractères !"
      * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
+     * )
      */
     private $command;
 
@@ -49,6 +53,10 @@ class Documentation
      *     max=255,
      *     minMessage="La syntaxe de la commande doit faire au moins 3 caractères !",
      *     maxMessage="La syntaxe de la commande ne doit pas excéder 255 caractères !"
+     * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
      * )
      */
     private $syntax;
@@ -61,6 +69,10 @@ class Documentation
      *     minMessage="Le raccourci de la commande doit faire au moins 2 caractères !",
      *     maxMessage="Le raccourci de la commande ne doit pas excéder 255 caractères !"
      * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
+     * )
      */
     private $shortcut;
 
@@ -70,6 +82,10 @@ class Documentation
      *     min=50,
      *     minMessage="La description de la commande doit faire au moins 50 caractères !"
      * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
+     * )
      */
     private $description;
 
@@ -78,6 +94,10 @@ class Documentation
      * @Assert\Length(
      *     min=6,
      *     minMessage="L'exemple de la commande doit faire au moins 6 caractères !"
+     * )
+     * @Assert\NotBlank(
+     *     normalizer="trim",
+     *     message="Vous devez renseigner ce champ"
      * )
      */
     private $example;
