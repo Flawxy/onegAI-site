@@ -40,11 +40,15 @@
         {{ form_row(docForm.wip) }}
 
         <button type="submit" class="btn btn-primary adminButton rounded-pill">
+            <span class="far fa-edit"></span>
             Modifier l'entrée
         </button>
         <div class="float-right">
             <a href="{{ path('doc_delete', {'id': entry.id }) }}" class=" btn btn-danger adminButton rounded-pill"
-               onclick="return confirm(`Êtes-vous sûr de vouloir supprimer l'entrée {{ entry.command }} ?`)">Supprimer l'entrée</a>
+               onclick="return confirm(`Êtes-vous sûr de vouloir supprimer l'entrée {{ entry.command }} ?`)">
+                <span class="far fa-trash-alt"></span>
+                Supprimer l'entrée
+            </a>
         </div>
         {{ form_end(docForm) }}
 

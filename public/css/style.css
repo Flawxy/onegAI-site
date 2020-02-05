@@ -30,7 +30,7 @@ div.post-title h1, div.post-title p {
     text-shadow: 3px 3px 3px rgb(0,0,0);
 }
 
-div.articleContent {
+div.postContent {
     color: whitesmoke;
     text-shadow: 3px 3px 3px rgb(0,0,0);
 }
@@ -43,9 +43,18 @@ div.articleContent {
 .alertFlash {
     position: fixed;
     width: 100%;
-    bottom: 0;
+    top: 0;
     z-index: 1000;
 }
+
+.successFlash {
+    color: green;
+}
+
+.dangerFlash {
+    color: darkred;
+}
+
 /*-------------------- ADMINISTRATION CATEGORY --------------------*/
 .adminButton {
     text-shadow: 3px 3px 3px rgb(0,0,0);
@@ -120,26 +129,17 @@ span.fas.fa-plus {
     text-shadow: 1px 1px 1px rgb(0,0,0);
 }
 
-.stringParameter:before {
-    content: 'string';
-    position: absolute;
-    top: -17px;
-    color: darkblue;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 40%;
-}
-
-.integerParameter:before {
-    content: 'integer';
-    position: absolute;
-    top: -17px;
-    color: darkred;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 40%;
-}
-
 .commandName {
     color: deepskyblue;
     text-shadow: 3px 3px 3px rgb(0,0,0);
     font-weight: bold;
+}
+
+p.categoryContent {
+    color: whitesmoke;
+    text-shadow: 3px 3px 3px rgb(0,0,0);
+}
+
+p[id^="category"]>span {
+    text-shadow: 3px 3px 3px rgb(0,0,0);
 }
