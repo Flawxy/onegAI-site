@@ -31,7 +31,6 @@ class ApiController extends AbstractController
             $response = new JsonResponse();
 
             $posts = $repo->findBy(array(), array('id' => 'DESC'));
-            dump($posts);
 
             foreach ($posts as $post) {
                 if(preg_match('/changelog/i', $post->getTitle())) {
