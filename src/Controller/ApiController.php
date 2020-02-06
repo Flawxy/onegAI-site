@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Repository\PostRepository;
+use ReallySimpleJWT\Token;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use function MongoDB\BSON\fromJSON;
+
 
 class ApiController extends AbstractController
 {
@@ -23,8 +24,9 @@ class ApiController extends AbstractController
      */
     public function lastChangelog(Request $request, PostRepository $repo)
     {
-        // Remplacer 'cookie' par la gestion du JasonWebToken (ne pas écrire en DUR, utiliser .env et les var Heroku
-        if($request->headers->has('cookie')) {
+
+        //Remplacer 'cookie' par la gestion du JasonWebToken (ne pas écrire en DUR, utiliser .env et les var Heroku
+        //if($request->headers->has('cookie')) {
 
             $response = new JsonResponse();
 
@@ -46,8 +48,8 @@ class ApiController extends AbstractController
                 }
             }
             return new Response("Une erreur est survenue durant la communication avec l'API...");
-        }else {
+        /*}else {
             return new Response("Vous n'avez pas l'autorisation d'accéder à ces informations");
-        }
+        }*/
     }
 }
