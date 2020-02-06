@@ -37,6 +37,7 @@ class ApiController extends AbstractController
                     $response->setContent(json_encode([
                         'id' => $post->getId(),
                         'title' => $post->getTitle(),
+                        'botVersion' => preg_replace('/changelog /i', '', $post->getTitle()),
                         'content' => $post->getContent(),
                         'slug' => $post->getSlug(),
                         'createdAt' => $post->getCreatedAt(),
