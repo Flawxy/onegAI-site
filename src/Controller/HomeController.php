@@ -28,14 +28,11 @@ class HomeController extends Controller {
                 $botVersion = $post->getTitle();
             }
         }
-        // On supprime le string "changelog" pour obtenir uniquement la version du bot
+        // On supprime le "changelog" pour obtenir uniquement la version du bot
         $botVersion = preg_replace('/changelog /i', '', $botVersion);
 
-        // Selects the 3 last posts
-        $lastPosts = $repo->findBy(array(), array('createdAt' => 'DESC'), 3);
-
         return $this->render('home.html.twig', [
-            'posts' => $lastPosts,
+            'posts' => $repo->findBy(array(), array('createdAt' => 'DESC'), 3),
             'botVersion' => $botVersion
         ]);
     }
