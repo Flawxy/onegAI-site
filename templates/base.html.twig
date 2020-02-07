@@ -4,17 +4,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         {% block metaDescription %}{% endblock %}
-        <!-- Google Search Console code -->
+        <!-- Google Search Console -->
         <meta name="google-site-verification" content="S6JK5GMC1ZCCktS6b1tXS0hIinjBvRNrTk9HBpyPESQ" />
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157965526-1"></script>
+        <!-- Google Analytics -->
         <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-157965526-1');
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+            ga('create', 'UA-157965526-1', 'auto');
+            ga('send', 'pageview');
         </script>
+        <script async src='https://www.google-analytics.com/analytics.js'></script>
+        <!-- End Google Analytics -->
         <title>OnegAI - {% block title %}Bienvenue !{% endblock %}</title>
         <script src="https://kit.fontawesome.com/a2ce339fb0.js" crossorigin="anonymous"></script>
         <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/superhero/bootstrap.min.css" rel="stylesheet"
