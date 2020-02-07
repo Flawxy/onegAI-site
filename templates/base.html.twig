@@ -3,7 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% block metaDescription %}{% endblock %}
+        <!-- Google Search Console code -->
         <meta name="google-site-verification" content="S6JK5GMC1ZCCktS6b1tXS0hIinjBvRNrTk9HBpyPESQ" />
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157965526-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-157965526-1');
+        </script>
         <title>OnegAI - {% block title %}Bienvenue !{% endblock %}</title>
         <script src="https://kit.fontawesome.com/a2ce339fb0.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
