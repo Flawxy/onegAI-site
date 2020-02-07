@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block metaDescription %}
+<meta name="description" content='Article "{{ post.title }}" posté le {{ post.createdAt | date("d/m/Y") }} :
+"{{ post.introduction }}"' />
+{% endblock %}
+
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block body %}
 <div class="post-title" style="background-image: url({{ post.image }}">
     <div class="container">
         <h1>{{ post.title }} </h1>
-        <p><small>Posté le {{ post.createdAt | date("d/m/Y") }}</small></p>
+        <p><small>Posté le {{ post.createdAt | date("d/m/Y à H:i") }}</small></p>
         <p>{{ post.introduction }}</p>
         {% if app.user %}
             <a href="{{ path('posts_edit', {'slug': post.slug}) }}" class="btn btn-info adminButton rounded-pill">
