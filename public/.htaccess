@@ -112,11 +112,11 @@ DirectoryIndex index.php
   ExpiresByType video/mpeg "access plus 1 year"
 
   # CSS, JavaScript
-  ExpiresByType text/css "access plus 6 months"
-  ExpiresByType text/javascript "access plus 6 months"
-  ExpiresByType application/javascript "access plus 6 months"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
 
   # Others
-  ExpiresByType application/pdf "access plus 6 months"
-  ExpiresByType application/x-shockwave-flash "access plus 6 months"
+  ExpiresByType application/pdf "access plus 1 year"
+  ExpiresByType application/x-shockwave-flash "access plus 1 year"
 </IfModule>
