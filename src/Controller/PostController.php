@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\PostRepository;
+use App\Service\PaginationService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -56,16 +57,22 @@ class PostController extends AbstractController
     /**
      * Displays the posts list page
      *
-     * @Route("/posts", name="posts_index")
+     * @Route("/posts/{page<\d+>?1}", name="posts_index")
      * @param PostRepository $repo
      * @return Response
      */
-    public function index(PostRepository $repo)
+    public function index(PostRepository $repo, $page, PaginationService $pagination)
     {
-        $posts = $repo->findBy(array(), array('createdAt' => 'DESC'));
+        $pagination->setEntityClass(Post::class)
+            ->setCurrentPage($page);
+
+
+        if(empty($pagination->getData())) {
+            return $this->redirectToRoute('posts_index');
+        }
 
         return $this->render('post/index.html.twig', [
-            'posts' => $posts
+            'pagination' => $pagination
         ]);
     }
 
