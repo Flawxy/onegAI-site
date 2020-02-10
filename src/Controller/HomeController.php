@@ -4,36 +4,26 @@ namespace App\Controller;
 
 
 use App\Repository\PostRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Service\ApiService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends Controller {
+class HomeController extends AbstractController {
 
     /**
      * Displays the homepage
      *
      * @Route("/", name="homepage")
      * @param PostRepository $repo
+     * @param ApiService $apiService
      * @return Response
      */
-    public function home(PostRepository $repo)
+    public function home(PostRepository $repo, ApiService $apiService)
     {
-        $posts = $repo->findAll();
-        $botVersion = '';
-
-        foreach ($posts as $post) {
-            if (preg_match('/changelog/i', $post->getTitle())) {
-
-                $botVersion = $post->getTitle();
-            }
-        }
-        // On supprime le "changelog" pour obtenir uniquement la version du bot
-        $botVersion = preg_replace('/changelog /i', '', $botVersion);
-
         return $this->render('home.html.twig', [
-            'posts' => $repo->findBy(array(), array('createdAt' => 'DESC'), 3),
-            'botVersion' => $botVersion
+            'posts' => $repo->findBy([], ['createdAt' => 'DESC'], 3),
+            'botVersion' => $apiService->getBotLastVersion()
         ]);
     }
 }
