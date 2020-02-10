@@ -19,6 +19,27 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
+    public function getLastChangelog()
+    {
+        $changelogs = $this->getAllChangelogs();
+
+        return $changelogs[sizeof($changelogs)-1];
+    }
+
+    public function getAllChangelogs()
+    {
+        $changelogs = [];
+        $posts = $this->findAll();
+
+        foreach ($posts as $post) {
+            if(preg_match('/changelog/i', $post->getTitle())) {
+                $changelogs[] = $post;
+            }
+        }
+
+        return $changelogs;
+    }
+
     // /**
     //  * @return Post[] Returns an array of Post objects
     //  */
