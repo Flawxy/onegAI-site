@@ -4,7 +4,8 @@ namespace App\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-class PaginationService {
+class PaginationService
+{
 
     private $entityClass;
     private $limit = 6;
