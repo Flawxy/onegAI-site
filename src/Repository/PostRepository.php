@@ -23,21 +23,17 @@ class PostRepository extends ServiceEntityRepository
     {
         $changelogs = $this->getAllChangelogs();
 
-        return $changelogs[sizeof($changelogs)-1];
+        return $changelogs[count($changelogs) - 1];
     }
 
     public function getAllChangelogs()
     {
-        $changelogs = [];
-        $posts = $this->findAll();
-
-        foreach ($posts as $post) {
-            if(preg_match('/changelog/i', $post->getTitle())) {
-                $changelogs[] = $post;
-            }
-        }
-
-        return $changelogs;
+        return $this->createQueryBuilder('p')
+            ->where('p.title LIKE :title')
+            ->setParameter('title', '%changelog%')
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     // /**
