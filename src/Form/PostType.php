@@ -23,7 +23,10 @@ class PostType extends ApplicationType
                 "La phrase d'accroche de l'article (20 caractères minimum)"))
             ->add('content', TextareaType::class,
                 $this->getConfiguration("Contenu",
-                "Le contenu de l'article (100 caractères minimum)"))
+                "Le contenu de l'article (100 caractères minimum)",
+                [
+                    'attr' => ['class' => 'ckeditor']
+                ]))
             ->add('image', UrlType::class,
                 $this->getConfiguration("Image",
                 "L'adresse de l'image de présentation de l'article"))

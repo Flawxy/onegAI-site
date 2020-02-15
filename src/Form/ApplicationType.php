@@ -13,15 +13,16 @@ class ApplicationType extends AbstractType
      *
      * @param string $label
      * @param string $placeholder
+     * @param array $options
      * @return array
      */
-    public function getConfiguration($label, $placeholder)
+    public function getConfiguration($label, $placeholder, $options = [])
     {
-        return [
+        return array_merge_recursive([
             'label' => $label,
             'attr' => [
                 'placeholder' => $placeholder
             ]
-        ];
+        ], $options);
     }
 }
