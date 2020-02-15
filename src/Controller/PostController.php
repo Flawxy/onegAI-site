@@ -59,6 +59,8 @@ class PostController extends AbstractController
      *
      * @Route("/posts/{page<\d+>?1}", name="posts_index")
      * @param PostRepository $repo
+     * @param $page
+     * @param PaginationService $pagination
      * @return Response
      */
     public function index(PostRepository $repo, $page, PaginationService $pagination)

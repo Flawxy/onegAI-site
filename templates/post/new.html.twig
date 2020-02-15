@@ -9,7 +9,7 @@
 
     {{ form_start(postForm) }}
 
-    {{ form_widget(postForm) }}
+    {{ form_row(postForm) }}
 
     <button type="submit" class="btn btn-success adminButton rounded-pill">
         <span class="fas fa-plus-circle"></span>
@@ -19,4 +19,10 @@
     {{ form_end(postForm) }}
 
 </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( '.ckeditor' );
+    </script>
 {% endblock %}
