@@ -78,6 +78,10 @@ div.postContent {
     color: greenyellow;
 }
 
+legend.col-form-label {
+    display: none;
+}
+
 /*-------------------- DOCUMENTATION CATEGORY --------------------*/
 #docJumbotron {
     background-image: url("/images/onegaiBot_full.png");
