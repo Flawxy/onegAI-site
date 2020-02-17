@@ -19,23 +19,23 @@ class PaginationService
 
     public function getPages()
     {
-        // 1) Connaître le total des enregistrements de la table
+        // Retrieves the amount of entries in the DB
         $repo = $this->manager->getRepository($this->entityClass);
         $total = count($repo->findAll());
 
-        // 2) Faire la division, l'arrondir et la renvoyer
+        // Divides, rounds and returns
         return ceil($total / $this->limit);
     }
 
     public function getData()
     {
-        // 1) Calculer l'offset
+        // Calculates the offset
         $offset = $this->limit * ($this->currentPage - 1);
 
-        // 2) Demander au repository de trouver les éléments
+        // Finds the correct repository
         $repo = $this->manager->getRepository($this->entityClass);
 
-        // 3) Renvoyer les éléments en question
+        // Returns the sorted data
         return $repo->findBy([], ['createdAt' => 'DESC'], $this->limit, $offset);
     }
 
