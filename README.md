@@ -1,4 +1,4 @@
-<img src="https://i.ibb.co/MpcyVqN/onegai-Bot-pp.png" alt="onegai-Bot-pp">
+<img src="https://i.ibb.co/V9PmY6z/onegai-Bot-pp.png" alt="onegai-Bot-pp">
 
 # Site de documentation du robot Discord onegAI
 ## Un projet libre par Yann Vogel.
